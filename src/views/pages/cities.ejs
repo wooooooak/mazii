@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <% include ../partials/stylesheet %>
+</head>
+<body>
+    <!-- Fixed navbar -->
+<% include ../partials/header %>
+<!-- Fixed navbar -->
+
+  <div class="container-fluid">
+    
+      <div class='main_img_container'>
+        <img src="/images/sea.jpg" alt="mazii" id='main_img'>
+        <div class="text">
+          <p>여행 동행을 만나보세요!</p>
+        </div>
+      </div>
+
+<!-- not my code -->
+
+    <div id="cities">
+        <input class="search" placeholder="Search Filter" />
+        <ul class="list">
+            <li class="cityList">
+                <a class="name">seoul</a>
+            </li>
+            <li class="cityList">
+                <a class="name">paris</a>
+            </li>
+            <li class="cityList">
+                <a class="name">HongKong</a>
+            </li>
+            <li class="cityList">
+                <a class="name">Tokyo</a>
+            </li>
+            <li class="cityList">
+                <a class="name">JeJu</a>
+            </li>
+            <li class="cityList">
+                <a class="name">Busan</a>
+            </li>
+            <li class="cityList">
+                <a class="name">Macao</a>
+            </li>
+        </ul>
+    </div>
+
+  </div>
+
+
+    <% include ../partials/javascript %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.3.0/list.min.js"></script>
+    <script src="/javascripts/citieSearch.js"></script>
+    <% include ../partials/footer %>
+</body>
+</html>

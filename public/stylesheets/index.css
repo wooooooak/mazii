@@ -1,0 +1,16 @@
+.main_img_container{
+    position: relative;
+  }
+
+.main_img_container > .text{
+    position: absolute;
+    top:30vh;
+    left: 13vw;
+    color: white;
+    font-size: 30px;
+}
+
+#main_img{
+    width: 97vw;
+    max-height: 600px;
+}

@@ -1,0 +1,42 @@
+
+var FacebookStrategy = require('passport-facebook').Strategy;
+var config = require('../config');
+var User = require('../../model/Users');
+
+module.exports = function(app, passport) {
+	return new FacebookStrategy({
+		clientID: config.facebook.clientID,
+		clientSecret: config.facebook.clientSecret,
+		callbackURL: config.facebook.callbackURL,
+		profileFields: ['id', 'displayName', 'photos', 'email']
+	}, function(accessToken, refreshToken, profile, done) {
+		console.log('passport의 facebook 호출됨.');
+		console.dir(profile);
+		
+		var options = {
+		    criteria: { 'facebook.id': profile.id }
+		};
+		
+		var database = app.get('database');
+	    User.findOne(options.criteria, function (err, user) {
+			if (err) return done(err);
+      
+			if (!user) {
+				var user = new User({
+					name: profile.displayName,
+					email: profile.emails[0].value,
+					provider: 'facebook',
+					authToken: accessToken,
+					facebook: profile._json
+				});
+        
+				user.save(function (err) {
+					if (err) console.log(err);
+					return done(err, user);
+				});
+			} else {
+				return done(err, user);
+			}
+	    });
+	});
+};

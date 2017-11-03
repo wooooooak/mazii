@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../partials/stylesheet %>
+</head>
+<body>
+    <!-- Fixed navbar -->
+<% include ../partials/header %>
+<!-- Fixed navbar -->
+
+
+    <div class="container">
+
+        <% if(user) {%>
+          <h2>
+            <%= user.name %>
+            <%= user.email %>
+            <%= user._id %>
+          </h2>
+        <%} %>    
+
+    </div>
+
+    <% include ../partials/footer %>
+    <% include ../partials/javascript %>
+</body>
+</html>
