@@ -7,11 +7,17 @@ const Post = new mongoose.Schema({
     city : String,
     Date: {
         start : Date,
-        end : Date
+        end : Date,
     },
-    content:String,     
+    content:String,
     upvote:Number,
-    chat:[String]
+    count:Number,
+    chat:[String],
+},
+{
+    timestamps:true
 });
+
+
 
 module.exports = mongoose.model('Post', Post);

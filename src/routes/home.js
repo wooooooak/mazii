@@ -36,12 +36,10 @@ router.get('/cities', function(req, res, next) {
   }
 });
 
-router.get('/:city',(req,res,next)=>{
+router.get('/city/:city',(req,res,next)=>{
   //url에서 도시 이름 구하기
-  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-  let curUrl = url.parse(fullUrl);
-  let cityName = removeSlash(curUrl.path);  //"HongKong"과 같은 도시 이름저장
-  console.log(cityName);
+  let cityName = removeWhitespace(req.params.city); //"HongKong"과 같은 도시 이름저장
+  console.log(cityName + "======================");
   let title = '여행';
   if (!req.user) {
     console.log('사용자 인증 안된 상태임.');
@@ -67,15 +65,16 @@ router.get('/:city',(req,res,next)=>{
 });
 
 
-// url의 pathname이 /seoul 으로 나오는 것을 seoul로 파싱
-function removeSlash(pathname){
-  let pathArr = Array.from(pathname).splice(1);
-  let index = pathArr.indexOf('%');
+// url의 pathname이 Mexico city -> Mexicocity로 파싱
+function removeWhitespace(pathname){
+  let pathArr = Array.from(pathname);
+  console.log(pathArr);
+  let index = pathArr.indexOf(' ');
   console.log(index);
   if(index===-1){
     return pathArr.join('');
   }else{
-    pathArr.splice(index,3);
+    pathArr.splice(index,1);
     return pathArr.join('');
   }
 

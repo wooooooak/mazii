@@ -6,36 +6,36 @@ var options = {
 };
 
 var values = [
-  { city: 'Paris', nation:'France',link:'Paris' }
-  , { city: 'Lyon', nation:'France',link:'Lyon' }
-  , { city: 'Tokyo', nation:'Japan',link:'Tokyo' }
-  , { city: 'HongKong', nation:'China',link:'HongKong' }
-  , { city: 'Osaka', nation:'Japan',link:'Osaka' }
-  , { city: 'Rome', nation:'Italy',link:'Rome' }
-  , { city: 'Venice', nation:'Italy',link:'Venice' }
-  , { city: 'Hanoi', nation:'Vietnam',link:'Hanoi' }
-  , { city: 'Sidney', nation:'Australia',link:'Sidney' }
-  , { city: 'Bangkok', nation:'Thailand',link:'Bangkok' }
-  , { city: 'Prague', nation:'Czech Republic',link:'Prague' }
-  , { city: 'Seoul', nation:'Korea',link:'Seoul' }
-  , { city: 'Jeju', nation:'Korea',link:'Jeju' }
-  , { city: 'Busan', nation:'Korea',link:'Busan' }
-  , { city: 'Istanbul', nation:'Turkey',link:'Istanbul' }
-  , { city: 'Madrid', nation:'Spain',link:'Madrid' }
-  , { city: 'Granada', nation:'Spain',link:'Granada' }
-  , { city: 'Athine', nation:'Greece',link:'Athine' }
-  , { city: 'Amsterdam', nation:'Netherlands',link:'Amsterdam' }
-  , { city: 'London', nation:'the United Kingdom',link:'London' }
-  , { city: 'Lisbon', nation:'Portugal',link:'Lisbon' }
-  , { city: 'Berlin', nation:'Germany',link:'Berlin' }
-  , { city: 'Ottawa', nation:'Canada',link:'Ottawa' }
-  , { city: 'Singapore', nation:'Singapore',link:'Singapore' }
-  , { city: 'Washington D.C', nation:'the United States',link:'Washington D.C' }
-  , { city: 'New York', nation:'the United States',link:'New York' }
-  , { city: 'Las Vegas', nation:'the United States',link:'Las Vegas' }
-  , { city: 'Maxico city', nation:'Maxico',link:'Maxico city' }
-  , { city: 'Venice', nation:'Moroco',link:'Venice' }
-  , { city: 'Beijing', nation:'China',link:'Beijing' }
+  { city: 'Paris', nation:'France',link:'city/Paris' }
+  , { city: 'Lyon', nation:'France',link:'city/Lyon' }
+  , { city: 'Tokyo', nation:'Japan',link:'city/Tokyo' }
+  , { city: 'HongKong', nation:'China',link:'city/HongKong' }
+  , { city: 'Osaka', nation:'Japan',link:'city/Osaka' }
+  , { city: 'Rome', nation:'Italy',link:'city/Rome' }
+  , { city: 'Venice', nation:'Italy',link:'city/Venice' }
+  , { city: 'Hanoi', nation:'Vietnam',link:'city/Hanoi' }
+  , { city: 'Sidney', nation:'Australia',link:'city/Sidney' }
+  , { city: 'Bangkok', nation:'Thailand',link:'city/Bangkok' }
+  , { city: 'Prague', nation:'Czech Republic',link:'city/Prague' }
+  , { city: 'Seoul', nation:'Korea',link:'city/Seoul' }
+  , { city: 'Jeju', nation:'Korea',link:'city/Jeju' }
+  , { city: 'Busan', nation:'Korea',link:'city/Busan' }
+  , { city: 'Istanbul', nation:'Turkey',link:'city/Istanbul' }
+  , { city: 'Madrid', nation:'Spain',link:'city/Madrid' }
+  , { city: 'Granada', nation:'Spain',link:'city/Granada' }
+  , { city: 'Athine', nation:'Greece',link:'city/Athine' }
+  , { city: 'Amsterdam', nation:'Netherlands',link:'city/Amsterdam' }
+  , { city: 'London', nation:'the United Kingdom',link:'city/London' }
+  , { city: 'Lisbon', nation:'Portugal',link:'city/Lisbon' }
+  , { city: 'Berlin', nation:'Germany',link:'city/Berlin' }
+  , { city: 'Ottawa', nation:'Canada',link:'city/Ottawa' }
+  , { city: 'Singapore', nation:'Singapore',link:'city/Singapore' }
+  , { city: 'Washington D.C', nation:'the United States',link:'city/Washington D.C' }
+  , { city: 'New York', nation:'the United States',link:'city/New York' }
+  , { city: 'Las Vegas', nation:'the United States',link:'city/Las Vegas' }
+  , { city: 'Maxico city', nation:'Maxico',link:'city/Maxico city' }
+  , { city: 'Venice', nation:'Moroco',link:'city/Venice' }
+  , { city: 'Beijing', nation:'China',link:'city/Beijing' }
 ];
 
 var cityList = new List('city-list', options, values);

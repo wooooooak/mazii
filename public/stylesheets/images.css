@@ -18,7 +18,7 @@
 }
 
 /* 도시별 이미지 */
-/*  이미지는 2400*700 으로. */
+/*  이미지는 1920*690 비율으로. */
 .city_img_container{
     position: relative;
     margin: 0px;
