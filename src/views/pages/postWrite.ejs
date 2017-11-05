@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../partials/stylesheet %>
+    <script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+</head>
+<body>
+    <!-- Fixed navbar -->
+<% include ../partials/header %>
+<!-- Fixed navbar -->
+
+    <div class="container postWrtieContainer">
+        <p class="text-center"><%=travelInfo.city %></p>
+        <div class="row text-center">
+            <%=travelInfo.startDate %> ~ 
+            <%=travelInfo.endDate %>
+        </div>
+
+        <div class="postEditor">    
+            <form method="post" action="/post/finish">
+            <textarea name="editor1" id="editor1"></textarea>
+                <script>
+                    CKEDITOR.replace('editor1');
+                    let data = CKEDITOR.instances.editor1.getData();
+                </script>
+            <button type="submit" class="btn">submit</button>
+            </form>
+        </div>
+    </div>
+
+    <% include ../partials/footer %>
+    <% include ../partials/javascript %>
+</body>
+</html>

@@ -17,7 +17,6 @@ module.exports = function(app, passport) {
 		    criteria: { 'facebook.id': profile.id }
 		};
 		
-		var database = app.get('database');
 	    User.findOne(options.criteria, function (err, user) {
 			if (err) return done(err);
       

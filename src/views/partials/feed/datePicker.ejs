@@ -1,0 +1,45 @@
+    <div class = "datePicker-container">
+    <form method="post" action="/post/toPostPage">
+
+            <div class = "col-md-2">
+                <div class="text-center">
+                    <%= city %>
+                </div>
+                <input type="hidden" name="city" value="<%= city %>" />
+            </div>
+
+            <div class = "col-md-3">
+            <div class="form-group text-center">
+                <label for="startDate" >출발</label>
+                <div class="input-group date">
+                        <input type="text" id="startDate" name="startDate" class="form-control text-center" 
+                            placeholder="yyyy/mm/dd">
+                        <span class="input-group-addon">
+                            <div class="glyphicon glyphicon-calendar"></div>
+                        </span>
+                </div>
+                </div>
+            </div>
+
+            <div class = "col-md-3">
+            <div class="form-group text-center">
+                <label for="endDate">도착</label>
+                <div class="input-group date">
+                        <input type="text" id="endDate" name="endDate" class="form-control text-center"
+                            placeholder="yyyy/mm/dd">
+                        <span class="input-group-addon ">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </span>
+                </div>
+                </div>
+            </div>
+
+            <button class="button-three col-md-2" id="datePicker-search" type="button">Search!</button>
+
+            <% if(user){ %>
+                <button class="button-three col-md-2" id="datePicker-write"
+                type="submit" >write!</button>
+            <% } %>
+            
+    </form>
+    </div>      

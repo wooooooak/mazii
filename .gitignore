@@ -1,0 +1,11 @@
+#이미지 파일
+public/images
+
+#노드모듈
+node_modules/
+
+#에디터 설정
+.vscode
+
+#디버그 로그
+npm-debug.log*

@@ -1,4 +1,4 @@
-.cityList {
+.list li{
     display: inline-block;
     width: 20%;
     font-size: 16px;
@@ -6,4 +6,15 @@
     padding-top: 10px;
   }
   
-  
+.list li span{
+  font-size : 10px;
+}
+
+.list li a{
+  color : black;
+  text-decoration: none;
+}
+
+.list li a:hover{
+  color : #fc6ad2;
+}

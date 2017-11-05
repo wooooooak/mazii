@@ -28,7 +28,7 @@ router.route('/auth/google/callback').get(passport.authenticate('google', {
   failureRedirect : '/profile'
 }));
 
-router.get('/profile',(req,res)=>{
+router.get('/auth/profile',(req,res)=>{
   // 인증 안된 경우
   if (!req.user) {
     console.log('사용자 인증 안된 상태임.');
@@ -36,7 +36,6 @@ router.get('/profile',(req,res)=>{
   } else {
       console.log('사용자 인증된 상태임.');
       console.log('/profile 패스 요청됨.');
-      console.dir(req.user);
 
       if (Array.isArray(req.user)) {
           res.render('profile.ejs', {user: req.user[0]._doc});
@@ -46,7 +45,7 @@ router.get('/profile',(req,res)=>{
   }
 });
 
-router.get('/logout',(req,res)=>{
+router.get('/auth/logout',(req,res)=>{
   req.logout();
   res.redirect('/');
 })

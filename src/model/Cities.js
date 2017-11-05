@@ -6,9 +6,6 @@ const City = new mongoose.Schema({
     email: {type: String, 'default':''},
     name : String,
     authToken:String,
-    provider: String,    
-    google:{},
-    facebook:{},
     chat:[String]
 });
 

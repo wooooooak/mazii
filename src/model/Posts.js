@@ -6,14 +6,12 @@ const Post = new mongoose.Schema({
     author : String, //author name
     city : String,
     Date: {
-        start:Date,
-        end:Date
-    }, 
-    authToken:String,
-    provider: String,    
-    google:{},
-    facebook:{},
+        start : Date,
+        end : Date
+    },
+    content:String,     
+    upvote:Number,
     chat:[String]
 });
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Post', Post);
