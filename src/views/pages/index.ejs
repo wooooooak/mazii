@@ -16,7 +16,8 @@
       </div>
         <% if(user) {%>
           <h2>
-            <%= user.email %>
+          <img src="<%= user.facebook.picture.data.url %>" alt="s" class="img-circle">
+            
           </h2>
         <%} %>    
       <p class="lead">Welcome to <%= title %></p>

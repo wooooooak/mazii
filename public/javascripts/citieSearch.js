@@ -1,11 +1,10 @@
 
-
-var options = {
+const options = {
   valueNames: [ 'city', 'nation',{attr:'href',name:'link'} ],
   item: '<li> <a class="link" /> <h3 class="city"></h3>  <span class="nation"></span></li>'
 };
 
-var values = [
+const values = [
   { city: 'Paris', nation:'France',link:'city/Paris' }
   , { city: 'Lyon', nation:'France',link:'city/Lyon' }
   , { city: 'Tokyo', nation:'Japan',link:'city/Tokyo' }
@@ -34,8 +33,7 @@ var values = [
   , { city: 'New York', nation:'the United States',link:'city/New York' }
   , { city: 'Las Vegas', nation:'the United States',link:'city/Las Vegas' }
   , { city: 'Maxico city', nation:'Maxico',link:'city/Maxico city' }
-  , { city: 'Venice', nation:'Moroco',link:'city/Venice' }
   , { city: 'Beijing', nation:'China',link:'city/Beijing' }
 ];
 
-var cityList = new List('city-list', options, values);
+const cityList = new List('city-list', options, values);

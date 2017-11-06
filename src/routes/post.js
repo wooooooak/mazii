@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
+
 
 const Post = require('../model/Posts');
+const User = require('../model/Users');
+
 
 module.exports = function(app){
     app.use('/',router);
@@ -27,27 +32,53 @@ router.get('/post/postWrite',(req,res,next)=>{
   });
   
   router.post('/post/finish',(req,res,next)=>{
+    let userId = ObjectId;
+    let email = req.body.email;
     let city = req.body.city;
-    let startDate = req.body.startDate;
-    let endDate = req.body.endDate;
-    insertPost(req.body);
-    console.log(city +''+ startDate);
-    res.redirect('/'+city)
+    User.findOne({email:email}).exec((err,user)=>{
+      if(err) console.log("에러입니다");
+      else{
+        userId = user._id;
+        // console.log("typeof userId "+typeof(userId));
+      }
+    }).then(()=>{
+      // console.log(city +''+ startDate +", "+email );
+      insertPost(req.body,userId);
+    })
+    res.redirect('/city/'+city)
   });
 
   
-  function insertPost(reqBody){
+  function insertPost(reqBody,userId){
     let post = new Post({
       city : reqBody.city,
+      author : mongoose.Types.ObjectId(userId),
       content : reqBody.editor1,
       Date :{
         start : reqBody.startDate,
         end : reqBody.endDate
-      }
+      },
+      count : 0,
+      upvote : 0,
+      chat : []
     });
+    // let post = new Post({
+    //   city : reqBody.city,
+    //   author : reqBody.name,
+    //   email : reqBody.email,
+    //   picture : reqBody.picture,
+    //   content : reqBody.editor1,
+    //   Date :{
+    //     start : reqBody.startDate,
+    //     end : reqBody.endDate
+    //   },
+    //   count : 0,
+    //   upvote : 0,
+    //   chat : []
+    // });
 
     post.save((err,post)=>{
       if(err) return console.error(err);
-      console.dir(post);
+      console.log("post 등록 성공");
     });
   }

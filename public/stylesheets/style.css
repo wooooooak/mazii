@@ -4,8 +4,16 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
+/* a {
   color: #00B7FF;
+} */
+/* ckeditor에서 .marker 적용 안되는것 명시 */
+.marker{
+	background-color: Yellow;
+}
+/*  기존 부트스트랩 panel-footer 색이 회색인것 변경 */
+.panel-footer{
+  background-color:white;
 }
 
 /* feed/dataPicker css */

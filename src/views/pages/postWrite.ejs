@@ -10,6 +10,10 @@
 <!-- Fixed navbar -->
 
     <div class="container postWrtieContainer">
+        <p class="text-center"><%=user.name %></p>
+        <p class="text-center"><%=user.email %></p>
+        <p class="text-center"><img src="<%= user.facebook.picture.data.url %>" alt="s" class="img-circle">
+        </p>
         <p class="text-center"><%=travelInfo.city %></p>
         <div class="row text-center">
             <%=travelInfo.startDate %> ~ 
@@ -20,6 +24,9 @@
         <div class="postEditor">    
             <form method="post" action="/post/finish">
                 <input type="hidden" name="city" value="<%= travelInfo.city %>" />
+                <input type="hidden" name="author" value="<%= user.name %>" />
+                <input type="hidden" name="email" value="<%= user.email %>" />
+                <input type="hidden" name="picture" value="<%= user.facebook.picture.data.url %>" />
                 <input type="hidden" name="startDate" value="<%= travelInfo.startDate %>" />
                 <input type="hidden" name="endDate" value="<%= travelInfo.endDate %>" />
                 <textarea name="editor1" id="editor1"></textarea>
