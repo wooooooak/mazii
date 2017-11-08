@@ -1,23 +1,27 @@
-var express = require('express');
-var Router = require('express').Router();
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const Router = require('express').Router();
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-var routerIndex = require('./src/routes/index');
-var config = require('./src/config/config');
+
+const routerIndex = require('./src/routes/index');
+const config = require('./src/config/config');
+
+
+
 
 // ODM With Mongoose
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 // Modules to store session
-var session    = require('express-session');
-var MongoStore = require('connect-mongo')(session);
+const session    = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 // Import Passport and Warning flash modules
-var passport = require('passport');
+const passport = require('passport');
 
-var app = express();
+const app = express();
 
 mongoose.connect(config.db.url);
 // Check if MongoDB is running
@@ -53,12 +57,12 @@ app.use(passport.session());
 
 routerIndex(app);
 
-var configPassport = require('./src/config/passport/passport');
+const configPassport = require('./src/config/passport/passport');
 configPassport(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });

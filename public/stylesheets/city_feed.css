@@ -6,7 +6,7 @@
   border-style: none;
   border-radius: 5px;
   background: white;
-  box-shadow: 3px 3px 15px #909fac;
+  box-shadow: 3px 3px 20px #7e93a3;
   margin-bottom: 30px;
 }
 
@@ -31,9 +31,32 @@
   padding: 15px;
 }
 
+.feed-panel-body p img{
+  max-width: 100%;
+	width: 600px;
+  max-height: 600px;
+}
+
 .feed-panel-footer{
+ padding-left: 10px;
+}
+
+.upvote{
 
 }
+.modify-btn{
+  float: right;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.delete-btn{
+ float: right;
+ padding-right: 10px;
+ cursor: pointer;
+}
+
+
 
 .come-in-box{
   padding: 40px;
@@ -82,3 +105,51 @@
               transform: translateY(0);
     }
   }
+
+
+
+.like-content {
+    display: inline-block;
+    width: 100%;
+    font-size: 18px;
+    border-top: 10px dashed #eee;
+    text-align: center;
+}
+
+.like-content span {
+	color: #9d9da4;
+	font-family: monospace;
+}
+.like-content .btn-secondary {
+	  display: block;
+	  margin: 15px auto 15px;
+    text-align: center;
+    background: #ed2553;
+    border-radius: 3px;
+    box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+    padding: 10px 17px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+.like-content .btn-secondary:hover {
+	  transform: translateY(-3px);
+}
+.like-content .btn-secondary .fa {
+	  margin-right: 5px;
+}
+.animate-like {
+	animation-name: likeAnimation;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	animation-duration: 0.65s;
+}
+@keyframes likeAnimation {
+  0%   { transform: scale(30); }
+  100% { transform: scale(1); }
+}

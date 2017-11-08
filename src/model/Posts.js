@@ -16,6 +16,14 @@ const Post = new mongoose.Schema({
     upvote:Number,
     count:Number, //조회수
     chat:[String],
+    chatWait:[{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'Post'
+    }],
+    chatOk:[{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'Post'
+    }]
 },
 {
     timestamps:true

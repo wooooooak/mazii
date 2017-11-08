@@ -22,14 +22,14 @@
 
 
         <div class="postEditor">    
-            <form method="post" action="/post/finish">
+            <form method="post" action="/post/modifyById/<%= travelInfo._id %>">
                 <input type="hidden" name="city" value="<%= travelInfo.city %>" />
                 <input type="hidden" name="author" value="<%= user.name %>" />
                 <input type="hidden" name="email" value="<%= user.email %>" />
                 <input type="hidden" name="picture" value="<%= user.facebook.picture.data.url %>" />
                 <input type="hidden" name="startDate" value="<%= travelInfo.startDate %>" />
                 <input type="hidden" name="endDate" value="<%= travelInfo.endDate %>" />
-                <textarea name="editor1" id="editor1"></textarea>
+                <textarea name="editor1" id="editor1"><%= travelInfo.content%></textarea>
                     <script>
                         CKEDITOR.replace('editor1',{
                             filebrowserUploadUrl: '/post/uploadImage'
@@ -37,7 +37,7 @@
                         
                         let data = CKEDITOR.instances.editor1.getData();
                     </script>
-                <button type="submit" class="btn">submit</button>
+                <button type="submit" class="btn">수정하기</button>
             </form>
         </div>
     </div>

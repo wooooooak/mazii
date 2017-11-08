@@ -5,7 +5,7 @@ const options = {
 };
 
 const values = [
-  { city: 'Paris', nation:'France',link:'city/Paris' }
+    { city: 'Paris', nation:'France',link:'city/Paris' }
   , { city: 'Lyon', nation:'France',link:'city/Lyon' }
   , { city: 'Tokyo', nation:'Japan',link:'city/Tokyo' }
   , { city: 'HongKong', nation:'China',link:'city/HongKong' }
