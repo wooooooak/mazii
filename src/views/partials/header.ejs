@@ -1,5 +1,5 @@
+                              <% let unread=0; %> 
                               <% if(user) { %>
-                              <% let unread = 0; %> 
                               <% user.Alarms.forEach((alarm,indx)=>{ %>
                                     <% if(alarm.checked===false) unread++ %>
                               <% }) %>
@@ -29,7 +29,9 @@
                             <a class="nav-link" href="/auth/logout">Logout</a>
                             <li class="nav-item navbar-right">
                               <a href="/alarm">Alarms <span class="badge asd">
+                              <% if(user) { %>
                                 <%= unread %>
+                                <% } %>
                               </span></a>
                             </li>
                             <li class="nav-item navbar-right">
