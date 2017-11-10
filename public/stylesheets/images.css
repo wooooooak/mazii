@@ -1,7 +1,8 @@
 
-/* 홈 메인화면이미지  */
+/* 홈 메인화면 배경이미지  */
 .main_img_container{
     position: relative;
+    margin-left: -1vw;
   }
 
 .main_img_container > .text{
@@ -13,7 +14,7 @@
 }
 
 #main_img{
-    width: 97vw;
+    width: 100vw;
     max-height: 600px;
 }
 
@@ -21,9 +22,7 @@
 /*  이미지는 1920*690 비율으로. */
 .city_img_container{
     position: relative;
-    margin: 0px;
-    padding: 0px;
-    width: 100vw;
+    margin-left: -1vw;
   }
 
 .city_img_container > .text{
@@ -35,6 +34,16 @@
 }
 
 #city_img{
-    width: 97vw;
+    width: 100vw;
     height: 60vh;
+}
+
+/* 프로필 사진 비율별로 사이즈 자를떄 */
+.aspect_1_1 { width: 50px; height: 50px; overflow: hidden;}
+.aspect_5_3 { width: 350px; height: 170px; overflow: hidden; }
+.aspect_4_5 { width: 80px; height: 100px; overflow: hidden;}
+
+/* 홈화면에 인기글 부분에 넣을 프로필 이미지 */
+.profileImage{
+    width: 100%; height: auto;margin-top: -100px;
 }

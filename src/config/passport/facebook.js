@@ -2,16 +2,17 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
 var config = require('../config');
 var User = require('../../model/Users');
+var UserMain = require('../../model/UserMains');
 
 module.exports = function(app, passport) {
 	return new FacebookStrategy({
 		clientID: config.facebook.clientID,
 		clientSecret: config.facebook.clientSecret,
 		callbackURL: config.facebook.callbackURL,
-		profileFields: ['id', 'displayName', 'photos', 'email']
+		profileFields: ['id', 'displayName', 'email','picture.type(large)']
 	}, function(accessToken, refreshToken, profile, done) {
-		console.log('passport의 facebook 호출됨.');
-		console.dir(profile);
+		// console.log('passport의 facebook 호출됨.');
+		// console.dir(profile);
 		
 		var options = {
 		    criteria: { 'facebook.id': profile.id }
@@ -19,7 +20,6 @@ module.exports = function(app, passport) {
 		
 	    User.findOne(options.criteria, function (err, user) {
 			if (err) return done(err);
-      
 			if (!user) {
 				var user = new User({
 					name: profile.displayName,
@@ -28,14 +28,33 @@ module.exports = function(app, passport) {
 					authToken: accessToken,
 					facebook: profile._json
 				});
-        
+
+				let userId = user._id;
+				console.log("userId = "+user._id);
+				
+				UserMain.findOne({user : userId},(err,userMain)=>{
+					if(err) console.log(err);;
+					if(!userMain){
+						const userMain = new UserMain({
+							user : userId
+						});
+	
+						userMain.save(err=>{
+							if(err) console.log(err);				
+						});
+						console.log("userMain doc 생성됨");
+					}else{
+						console.log(userMain.name+" userMain 이미존재");
+					}
+				})
+				
 				user.save(function (err) {
 					if (err) console.log(err);
-					return done(err, user);
+					 done(err, user);
 				});
 			} else {
-				return done(err, user);
+				done(err, user);
 			}
-	    });
+	    })
 	});
 };

@@ -50,6 +50,27 @@ $(function(){
                 console.log(err);
             })
         });
+
+        $('#datePicker-search').click((e)=>{
+
+            console.log($('#cityName').val());
+
+            $.ajax({
+                type:"POST",
+                url:'/api/post/getAllBetweenDate',
+                data:{
+                    cityName:$('#cityName').val(),
+                    startDate:$('#startDate').val(),
+                    endDate:$('#endDate').val()
+                },
+                dataType : "json",
+            }).success(data=>{
+                console.log(data);
+                showPost(data);
+            }).fail((err)=>{
+                alert(err);
+            })
+        })
 });
 
 

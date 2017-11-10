@@ -8,24 +8,58 @@
     <% include ../partials/header %>
     
 
+
   <div class="container-fluid">
-    <div class="">
         <% include ../partials/images/mainImage %>
-      <div class="page-header">
-        <h1><%= title %></h1>
-      </div>
-        <% if(user) {%>
-          <h2>
-          <img src="<%= user.facebook.picture.data.url %>" alt="s" class="img-circle">
-            
-          </h2>
+
+      <div class="index-container text-center">
+            <p class="indexTitles">Weekly Best Trip</p>
+        <% if(popularPost) {%>
+              <% let length = popularPost.length %>
+              <% popularPost.forEach((post,index)=>{ %>
+                <% if(index === 0 || index === 3 || index == 6) { %>
+                  <div class="row popularRow">
+                  <% } %>
+
+                  <div class="col-xs-12 col-md-4">
+                  <a href="#">
+                    <div class="aspect_5_3">
+                        <img src="<%= post.author.facebook.picture.data.url %>" class="profileImage"/>
+                    </div>
+                      <div class=""><%= post.author.name %>, <%= post.city %>
+                      </div>
+                      <span class="popularRowStartDay"><%= post.Date.start%></span>~
+                      <span class="popularRowEndDay"><%= post.Date.end%></span>
+                      <div class="popularContent"> <%= post.content %> </div>
+                      </a>
+                  </div>
+
+                <% if(index === 2 || index === 5 || index == 8|| index == length) { %>
+                </div>
+                <% } %>
+              <% }) %>
         <%} %>    
-      <p class="lead">Welcome to <%= title %></p>
+      </div>
   </div>
 
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
+    
     <script>
+    //mongoose에서 받아온 date형식을 보기 편하게 변경
+    $('.popularRowStartDay').each(function(index) {
+      // console.log($(this));
+       $(this).text(Array.from($(this).text()).slice(4,15).join(''));
+    });
+    $('.popularRowEndDay').each(function(index) {
+       $(this).text(Array.from($(this).text()).slice(4,15).join(''));
+    });
+    $('.popularContent').each(function(index) {
+       $(this).html($(this).text());
+    });
+
+
+        
 
     </script>
 </body>

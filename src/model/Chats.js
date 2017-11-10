@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 
 //post에 user:{type:Schema.ObjectId, ref:'User'}  을 하자 ObjectId는 User가 생길때마다 자동으로 User에 붙는 id이다.
 
-const Post = new mongoose.Schema({
-    author : {
+const Chat = new mongoose.Schema({
+    postId : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'Post'
+    },
+    ownerId : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
     },
-    city : String,
-    Date: {
-        start : Date,
-        end : Date,
-    },
+    
     content:String,
     upvote:Number,
     count:Number, //조회수
@@ -35,4 +35,4 @@ const Post = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model('Post', Post);
+module.exports = mongoose.model('Chat', Chat);

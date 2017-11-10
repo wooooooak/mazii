@@ -3,6 +3,7 @@ const router = express.Router();
 const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
+const moment = require('moment');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
@@ -19,8 +20,7 @@ uploadSetting = multer({
     },
     filename: function (req, file, cb) {
       cb(null, new Date().valueOf() + path.extname(file.originalname));
-    },
-    limits : {fileSize:1*1}
+    }
   }),
 });
 
@@ -56,7 +56,7 @@ router.put('/post/postWrite',(req,res,next)=>{
       else{
         userId = user._id;
         // console.log("typeof userId "+typeof(userId));
-      }
+      } 
     }).then(()=>{
       // console.log(city +''+ startDate +", "+email );
       insertPost(req.body,userId);
@@ -93,7 +93,7 @@ router.put('/post/postWrite',(req,res,next)=>{
   router.get('/post/postModify/:id',(req,res)=>{
     Post.findOne({'_id' : req.params.id}).exec((err,post)=>{
       if(err) console.log(err);
-      console.log(post);
+      // console.log(post);
       let title = '수정하기';
       res.render('postModify',{
         user : req.user,
@@ -107,17 +107,17 @@ router.put('/post/postWrite',(req,res,next)=>{
 //_id를 받아 post수정하기
 router.post('/post/modifyById/:id',(req,res)=>{
   let edit = req.body.editor1;
-  console.log(req.body.editor1);
+  // console.log(req.body.editor1);
   Post.findOne({'_id' : req.params.id}).exec((err,post)=>{
     if(err) console.log(err);
-    console.log(post);
+    // console.log(post);
     post.content = edit;
 
     post.save((err)=>{
       if(err) console.log(err);
     })
   }).then(post =>{
-    console.log(post);
+    // console.log(post);
     res.render('city_feed',{
       user :req.user,
       title : 'gg',
@@ -128,17 +128,25 @@ router.post('/post/modifyById/:id',(req,res)=>{
 });
   
   function insertPost(reqBody,userId){
+
+    let startDate = new Date(reqBody.startDate);
+    let endDate = new Date(reqBody.endDate);
+    //utc 시간 설정
+    startDate.setHours(startDate.getHours() + 9);
+    endDate.setHours(endDate.getHours() + 9);
+
     let post = new Post({
       city : reqBody.city,
       author : mongoose.Types.ObjectId(userId),
       content : reqBody.editor1,
       Date :{
-        start : reqBody.startDate,
-        end : reqBody.endDate
+        start : startDate,
+        end : endDate
       },
       count : 0,
       upvote : 0,
       chat : []
+      // chatOk : []
     });
 
     post.save((err,post)=>{
