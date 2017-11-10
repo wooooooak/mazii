@@ -81,8 +81,9 @@ router.get('/alarm', function(req, res, next) {
       console.log('사용자 인증 안된 상태임.'); //사실 로그인 안하면 alarm으로 이동하는 버튼이 없다.
       res.render('alarm.ejs',{user:null,title:title});
   }else{
+    console.log(req.user);
       Alarm.find({'to':req.user._id}).populate(['from','post']).exec((err,alarm)=>{
-        console.log(alarm);
+        // console.log(alarm);
         res.render('alarm.ejs',{
           user : req.user,
           title : title,

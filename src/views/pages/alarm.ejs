@@ -13,15 +13,23 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-    <%= Alarms %>
+    <% if(Alarms){ %>
+        <ul>
+      <% Alarms.forEach(function(alarm,index){ %>
+          <li>
+              <%= alarm.from.name%> 님께서 회원님의 여행지인 <%= alarm.post.city %>에 채팅 요청을 보냇습니다.
+              <p>수락하시겟습니까?</p>
+          </li>
+      <% }) %>
+        </ul>
+    <% } %>
 
-  </div>
+
+    Alarms[0] : 
+   <pre>
+        <%= Alarms[0] %>
+    </pre>
+  </div> <!--container-fluid end -->
 
     <% include ../partials/footer %>
     <% include ../partials/javascript %>

@@ -89,7 +89,7 @@ router.put('/chatRequest/:id',(req,res)=>{
                 if(err) console.log(err);
                 else{
                     //user doc에 alarm을 저장한다
-                    user.Alarms.push(mongoose.Types.ObjectId(authorId))
+                    user.Alarms.push(mongoose.Types.ObjectId(alarm._id))
                 }
                 user.save(err=>{
                     if(err) console.log(err);

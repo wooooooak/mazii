@@ -18,7 +18,7 @@ module.exports = function(app, passport) {
 		    criteria: { 'facebook.id': profile.id }
 		};
 		
-	    User.findOne(options.criteria, function (err, user) {
+	    User.findOne(options.criteria).populate('Alarms').exec(function (err, user) {
 			if (err) return done(err);
 			if (!user) {
 				var user = new User({
@@ -32,22 +32,7 @@ module.exports = function(app, passport) {
 				let userId = user._id;
 				console.log("userId = "+user._id);
 				
-				UserMain.findOne({user : userId},(err,userMain)=>{
-					if(err) console.log(err);;
-					if(!userMain){
-						const userMain = new UserMain({
-							user : userId
-						});
-	
-						userMain.save(err=>{
-							if(err) console.log(err);				
-						});
-						console.log("userMain doc 생성됨");
-					}else{
-						console.log(userMain.name+" userMain 이미존재");
-					}
-				})
-				
+
 				user.save(function (err) {
 					if (err) console.log(err);
 					 done(err, user);
@@ -58,3 +43,19 @@ module.exports = function(app, passport) {
 	    })
 	});
 };
+
+// UserMain.findOne({user : userId},(err,userMain)=>{
+// 	if(err) console.log(err);;
+// 	if(!userMain){
+// 		const userMain = new UserMain({
+// 			user : userId
+// 		});
+
+// 		userMain.save(err=>{
+// 			if(err) console.log(err);				
+// 		});
+// 		console.log("userMain doc 생성됨");
+// 	}else{
+// 		console.log(userMain.name+" userMain 이미존재");
+// 	}
+// })

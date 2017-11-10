@@ -1,5 +1,7 @@
-var facebook = require('./facebook');
-var google = require('./google');
+const facebook = require('./facebook');
+const google = require('./google');
+const mongoose = require('mongoose');
+const User = require('../../model/Users');
 
 module.exports = function (app, passport) {
 	console.log('config/passport 호출됨.');
@@ -18,12 +20,18 @@ module.exports = function (app, passport) {
     // user -> 사용자 인증 성공 시 serializeUser 메소드를 이용해 만들었던 세션 정보가 파라미터로 넘어온 것임
     passport.deserializeUser(function(user, done) {
         console.log('deserializeUser() 호출됨.');
-        // console.dir(user);
+        User.findOne({'_id':user._id}).populate('Alarms').exec((err,user)=>{
+            console.log("------------");
+            console.log(user.Alarms);
+            if(err) console.log(err);
+            
+        }).then(user=>{
+            // 사용자 정보 중 id나 email만 있는 경우 사용자 정보 조회 필요 - 여기에서는 user 객체 전체를 패스포트에서 관리
+            // 두 번째 파라미터로 지정한 사용자 정보는 req.user 객체로 복원됨
+            // 여기에서는 파라미터로 받은 user를 별도로 처리하지 않고 그대로 넘겨줌
+            done(null, user);  
+        })
 
-        // 사용자 정보 중 id나 email만 있는 경우 사용자 정보 조회 필요 - 여기에서는 user 객체 전체를 패스포트에서 관리
-        // 두 번째 파라미터로 지정한 사용자 정보는 req.user 객체로 복원됨
-        // 여기에서는 파라미터로 받은 user를 별도로 처리하지 않고 그대로 넘겨줌
-        done(null, user);  
     });
 
 	// 인증방식 설정

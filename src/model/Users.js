@@ -8,6 +8,10 @@ const User = new mongoose.Schema({
     authToken:String,
     provider: String,    
     facebook:{},
+    Alarms : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'Alarm'
+    }],
     //아래는 필요없을듯
     chatWait:[{
         type : mongoose.Schema.Types.ObjectId,
@@ -16,10 +20,6 @@ const User = new mongoose.Schema({
     chatAttended : [{
         type : mongoose.Schema.Types.ObjectId,
         ref : 'Post'
-    }],
-    Alarms : [{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'Alarm'
     }]
 });
 
