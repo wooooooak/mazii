@@ -6,9 +6,10 @@ const post = require('./post');
 
 const apiPost = require('./api/post');
 const apiUser = require('./api/user');
+const apiAlarm = require('./api/alarm');
 
 const conArray = [home,users,post];
-const apiArray = [apiPost,apiUser];
+const apiArray = [apiPost,apiUser,apiAlarm];
 
 module.exports= function(app){
   conArray.forEach((controller)=>{

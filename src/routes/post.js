@@ -51,15 +51,22 @@ router.put('/post/postWrite',(req,res,next)=>{
     let userId = ObjectId;
     let email = req.body.email;
     let city = req.body.city;
+    let postId ; 
     User.findOne({email:email}).exec((err,user)=>{
       if(err) console.log("에러입니다");
       else{
         userId = user._id;
+
         // console.log("typeof userId "+typeof(userId));
       } 
-    }).then(()=>{
+    }).then((user)=>{
       // console.log(city +''+ startDate +", "+email );
-      insertPost(req.body,userId);
+      postId = insertPost(req.body,userId);
+      
+      user.chatAttendedPost.push(mongoose.Types.ObjectId(postId));
+      user.save((err,user)=>{
+        if(err) console.log(err);
+      })
     })
     res.redirect('/city/'+city)
   });
@@ -145,7 +152,8 @@ router.post('/post/modifyById/:id',(req,res)=>{
       },
       count : 0,
       upvote : 0,
-      chat : []
+      chat : [],
+      chatAttendee : mongoose.Types.ObjectId(userId) //글 작성자는 최초의 채팅 참석자
       // chatOk : []
     });
 
@@ -153,5 +161,7 @@ router.post('/post/modifyById/:id',(req,res)=>{
       if(err) return console.error(err);
       console.log("post 등록 성공");
     });
+
+    return post._id;
   }
 

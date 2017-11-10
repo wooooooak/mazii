@@ -16,16 +16,24 @@
     <% if(Alarms){ %>
         <ul>
       <% Alarms.forEach(function(alarm,index){ %>
-          <li>
-              <%= alarm.from.name%> 님께서 회원님의 여행지인 <%= alarm.post.city %>에 채팅 요청을 보냇습니다.
+          <li class="">
+              <%= alarm.from.name%> 님께서 회원님의 여행지인 <%= alarm.post.city %> 포스트를 보고 채팅 요청을 보냇습니다.
               <p>수락하시겟습니까?</p>
+              <input type="hidden" id="reqUserId" value="<%= alarm.from._id %>">
+              <input type="hidden" id="postId" value="<%= alarm.post._id %>">
+              <input type="hidden" id="alarmId" value="<%= alarm._id %>">
+              <% if(alarm.checked === false) { %>
+                <div class="button btn-primary chatReqAcceptBtn">예 <%= alarm._id %></div>
+                <% } else { %>
+                <span>처리됨</span>
+                <% } %>
           </li>
       <% }) %>
         </ul>
     <% } %>
 
 
-    Alarms[0] : 
+    샘플 Alarms[0] : 
    <pre>
         <%= Alarms[0] %>
     </pre>
@@ -34,8 +42,6 @@
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
     <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
-    <script>
-
-    </script>
+    <script src="/javascripts/chat/chatIndex.js"></script>
 </body>
 </html>

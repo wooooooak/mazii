@@ -17,7 +17,8 @@ const User = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : 'Post'
     }],
-    chatAttended : [{
+    //채팅에 참여중인 post들
+    chatAttendedPost : [{
         type : mongoose.Schema.Types.ObjectId,
         ref : 'Post'
     }]
