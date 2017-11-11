@@ -3,10 +3,10 @@
 /**
  * Module dependencies.
  */
-const socketio = require('socket.io');
 const app = require('../app');
 const debug = require('debug')('mazii:server');
 const http = require('http');
+const setSocket = require('../src/config/socket');
 
 
 /**
@@ -30,42 +30,8 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 console.log('서버가 실행되었습니다.');
-
-const io = socketio.listen(server);
-console.log('socket.io 요청을 받아들일 준비 완료');
-
-let chatRooms=[]; //
-
-io.sockets.on('connection', (socket) => {
-
-  console.log('socket 요청 됨');
-
-  socket.on('disconnect', () => {
-    console.log('disconnected');
-  });
-
-  socket.on('enter', room => {
-    console.log('enter 이벤트 받음');
-    console.dir(room);
-
-    if(io.sockets.adapter.rooms[room.roomId]){
-      console.log('방이 이미 만들어져 있습니다.');
-    }else{
-      console.log('방을 새로 만듭니다.');
-    }
-
-    socket.join(room.roomId);
-    
-    let curRoom = io.sockets.adapter.rooms[room.roomId];
-    curRoom.id = room.roomId;
-    curRoom.owner = room.roomOwner;
-    
-    console.dir(io.sockets.adapter.rooms);
-
-
-  });
-
-});
+//소켓 설정.
+setSocket(server);
 
 /**
  * Normalize a port into a number, string, or false.

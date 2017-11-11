@@ -1,5 +1,4 @@
 const facebook = require('./facebook');
-const google = require('./google');
 const mongoose = require('mongoose');
 const User = require('../../model/Users');
 
@@ -37,8 +36,7 @@ module.exports = function (app, passport) {
 	// 인증방식 설정
 
 	passport.use('facebook', facebook(app, passport));
-	passport.use('google', google(app, passport));
 
-	console.log('facebook passport 인증방식 설정됨.');
+	// console.log('facebook passport 인증방식 설정됨.');
 	
 };
