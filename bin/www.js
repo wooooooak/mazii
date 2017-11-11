@@ -3,24 +3,24 @@
 /**
  * Module dependencies.
  */
+const socketio = require('socket.io');
+const app = require('../app');
+const debug = require('debug')('mazii:server');
+const http = require('http');
 
-var app = require('../app');
-var debug = require('debug')('mazii:server');
-var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
-
+const server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -28,6 +28,25 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+console.log('서버가 실행되었습니다.');
+
+const io = socketio.listen(server);
+console.log('socket.io 요청을 받아들일 준비 완료');
+
+let chatRooms=[]; //
+
+io.sockets.on('connection', (socket) => {
+
+  console.log('socket 요청 됨');
+
+  socket.on('disconnect', () => {
+    console.log('disconnected');
+  });
+
+
+
+});
 
 /**
  * Normalize a port into a number, string, or false.
@@ -38,7 +57,7 @@ function normalizePort(val) {
 
   if (isNaN(port)) {
     // named pipe
-    return val;
+    return val; 
   }
 
   if (port >= 0) {

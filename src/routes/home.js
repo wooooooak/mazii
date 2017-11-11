@@ -83,7 +83,8 @@ router.get('/alarm', function(req, res, next) {
   }else{
     console.log(req.user);
       Alarm.find({'to':req.user._id}).populate(['from','post']).exec((err,alarm)=>{
-        // console.log(alarm);
+        console.log("알람 =");
+        console.log(alarm);
         res.render('alarm.ejs',{
           user : req.user,
           title : title,
@@ -93,6 +94,25 @@ router.get('/alarm', function(req, res, next) {
   }
 });
 
+//채팅 리스트 보는페이지로 요청
+router.get('/chatList', function(req, res, next) {
+  if (!req.user) {
+      console.log('사용자 인증 안된 상태임.'); //사실 로그인 안하면 chatList로 이동하는 버튼이 없다.
+      res.render('chatList.ejs',{user:null});
+  }else{
+    console.log("req.user.id = "+req.user._id);
+      User.findById(req.user._id).populate(['chatAttendedPost',
+                {path:'chatAttendedPost',populate:{path:'author'}},
+                {path:'chatAttendedPost',populate:{path:'chatAttendee'}}]).exec((err,user)=>{
+        // console.log(alarm);
+        res.render('chatList.ejs',{
+          user : user
+        });
+
+      })
+    }
+  });
+  
 
 // url의 pathname이 Mexico city -> Mexicocity로 파싱
 function removeWhitespace(pathname){

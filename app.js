@@ -6,16 +6,13 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-
 const routerIndex = require('./src/routes/index');
 const config = require('./src/config/config');
 
 
 
-
-// ODM With Mongoose
 const mongoose = require('mongoose');
-// Modules to store session
+
 const session    = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 // Import Passport and Warning flash modules
@@ -24,7 +21,6 @@ const passport = require('passport');
 const app = express();
 
 mongoose.connect(config.db.url);
-// Check if MongoDB is running
 mongoose.connection.on('error', function() {
 	console.error('MongoDB Connection Error. Make sure MongoDB is running.');
 });
@@ -56,7 +52,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 routerIndex(app);
-
+ 
 const configPassport = require('./src/config/passport/passport');
 configPassport(app, passport);
 
@@ -79,3 +75,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+

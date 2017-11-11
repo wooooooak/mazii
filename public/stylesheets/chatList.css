@@ -1,0 +1,53 @@
+.card-holder{
+    padding:60px 250px 100px 250px;
+}
+
+.front{
+    display: table; 
+    margin: 50px auto 10px auto;
+}
+.card-container:hover{
+    box-shadow: 3px 3px 50px #7e93a3;
+}
+
+.cover{
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.cover span{
+    font-size: 10px;
+}
+
+.user-picture{
+    display: table;
+    margin: 5px auto 1px auto;
+}
+.user-picture .user-img{
+    width : 30px;
+    height : 30px;
+}
+
+.selected-chat{
+    background: #c3df777a;
+}
+
+/* Weekly Best Trip 문구 */
+.chat-list-title {
+    font-size: 30px;
+  animation-duration: 1s;
+  animation-name: slidein;
+  margin-bottom: 30px;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}

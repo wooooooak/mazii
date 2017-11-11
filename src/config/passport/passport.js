@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
         console.log('deserializeUser() 호출됨.');
         User.findOne({'_id':user._id}).populate('Alarms').exec((err,user)=>{
             console.log("------------");
-            console.log(user.Alarms);
+            // console.log(user.Alarms);
             if(err) console.log(err);
             
         }).then(user=>{

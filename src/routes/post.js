@@ -152,9 +152,8 @@ router.post('/post/modifyById/:id',(req,res)=>{
       },
       count : 0,
       upvote : 0,
-      chat : [],
-      chatAttendee : mongoose.Types.ObjectId(userId) //글 작성자는 최초의 채팅 참석자
-      // chatOk : []
+      chatAttendee : mongoose.Types.ObjectId(userId), //글 작성자는 최초의 채팅 참석자
+      message : []
     });
 
     post.save((err,post)=>{

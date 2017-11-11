@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <% let chatList = user.chatAttendedPost %>
+    <% let ListCount = chatList.length %>
+
     <title>mazii</title>
     <% include ../partials/stylesheet %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
@@ -13,15 +16,66 @@
 <br>
 <br>
 <br>
+<br>
+  <p class="text-center chat-list-title"><%= user.name %>님의 대화 목록입니다</p>
 
+  <section class="card-holder">
+      <!-- Begin  -->
+      <% chatList.forEach((post,index)=>{ %>
+        <div class="col-md-3 col-sm-6">
+          <div class="card-container">
+              <div class="front">
+                <div class="cover text-center">
+                  <%= post.city %> <br>
+                  <span class="chat-StartDay"><%= post.Date.start %></span> ..
+                  <span class="chat-EndDay"><%= post.Date.end %></span>
+                </div>
+
+                <div class="author-picture">
+                  <img src="<%= post.author.facebook.picture.data.url %>" class="img-circle author-img" />
+                </div>
+
+                <div class="user-picture">
+                  <% post.chatAttendee.forEach((attendee,index)=>{ %>
+                    <input type="hidden" name="attendeeName" value="<%= attendee.email %>"> 
+                    <img src="<%= attendee.facebook.picture.data.url %>" class="img-circle user-img" />
+                  <% }) %>
+                </div>
+                  
+                <div class="footer">
+                  <button type="button" class="btn btn-default btn-block enter-chat">대화하기</button>
+                </div>
+              </div>
+          </div>
+        </div>
+       <% })%>
+      </section>
+
+      <br>
+      <br>
+      <br>
+      <br>
 
   </div> <!--container-fluid end -->
+  <div class="text-center" id="chat-room">
+    채팅방~~~~
 
+  </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
-    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="/javascripts/chat/chatIndex.js"></script>
+    <script src="/javascripts/chat/socket.js"></script>
     <script>
-
+     
     </script>
+ 
+    <pre>
+      채팅 갯수 <%= ListCount %>
+      <br>
+      <%= chatList[0] %>
+    </pre>
 </body>
 </html>
