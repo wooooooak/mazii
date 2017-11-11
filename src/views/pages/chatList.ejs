@@ -22,7 +22,7 @@
   <section class="card-holder">
       <!-- Begin  -->
       <% chatList.forEach((post,index)=>{ %>
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3 col-sm-12">
           <div class="card-container">
               <div class="front">
                 <div class="cover text-center">
@@ -43,6 +43,7 @@
                 </div>
                   
                 <div class="footer">
+                  <input type="hidden" name="postId" value="<%= post._id %>">
                   <button type="button" class="btn btn-default btn-block enter-chat">대화하기</button>
                 </div>
               </div>

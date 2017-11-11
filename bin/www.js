@@ -44,7 +44,26 @@ io.sockets.on('connection', (socket) => {
     console.log('disconnected');
   });
 
+  socket.on('enter', room => {
+    console.log('enter 이벤트 받음');
+    console.dir(room);
 
+    if(io.sockets.adapter.rooms[room.roomId]){
+      console.log('방이 이미 만들어져 있습니다.');
+    }else{
+      console.log('방을 새로 만듭니다.');
+    }
+
+    socket.join(room.roomId);
+    
+    let curRoom = io.sockets.adapter.rooms[room.roomId];
+    curRoom.id = room.roomId;
+    curRoom.owner = room.roomOwner;
+    
+    console.dir(io.sockets.adapter.rooms);
+
+
+  });
 
 });
 
