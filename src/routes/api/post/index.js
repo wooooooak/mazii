@@ -110,12 +110,16 @@ router.post('/getAllBetweenDate',(req,res)=>{
     startDate.setHours(startDate.getHours() +9);
     endDate.setHours(endDate.getHours() +9);
     
-    console.log(startDate);
+    console.log("startdDate - "+startDate);
     
+    //post의start가 입력받은 시작날짜와 도착날짜 사이에 하루라도 겹치는것.
+    //그리고 post의end가 입력받은 시작날짜와 도착날짜 사이에 하루라도 겹치는것.
     Post.find({
         'city' : cityName,
-        'Date.start' : {$gte : startDate},
-        'Date.end' : {$lt : endDate}
+        $or:[
+            {'Date.start' : {$gte : startDate,$lte : endDate}},
+            {'Date.end' : {$gte : startDate,$lte : endDate}}
+        ]
     }).populate('author').exec((err,posts)=>{
         if(err) console.log(err);
         if(!posts){
