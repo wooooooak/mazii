@@ -1,6 +1,9 @@
 module.exports={
     db : {
-        url:'mongodb://localhost/mazii',
+        //배포용 mlab 클라우
+        url: 'mongodb://wooooooak:getover1@ds259305.mlab.com:59305/mazii'
+        //개발용 로컬 db
+        // url:'mongodb://localhost/mazii',
     },
     facebook:{
         clientID:'527791144236225',
