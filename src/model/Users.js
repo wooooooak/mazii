@@ -13,10 +13,10 @@ const User = new mongoose.Schema({
         ref : 'Alarm'
     }],
     //아래는 필요없을듯
-    chatWait:[{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'Post'
-    }],
+    // chatWait:[{
+    //     type : mongoose.Schema.Types.ObjectId,
+    //     ref : 'Post'
+    // }],
     //채팅에 참여중인 post들
     chatAttendedPost : [{
         type : mongoose.Schema.Types.ObjectId,

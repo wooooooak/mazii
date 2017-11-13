@@ -13,8 +13,8 @@ const Post = new mongoose.Schema({
         end : Date,
     },
     content:String,
-    upvote:Number,
-    count:Number, //조회수
+    // upvote:Number,
+    // count:Number, //조회수
     // chatRoomName : {type : String, lowercase:true, unique:true}, //그냥_id로..
     message:[{
         type : mongoose.Schema.Types.ObjectId,

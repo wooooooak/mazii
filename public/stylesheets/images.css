@@ -39,9 +39,9 @@
 }
 
 /* 프로필 사진 비율별로 사이즈 자를떄 */
-.aspect_1_1 { width: 50px; height: 50px; overflow: hidden;}
-.aspect_5_3 { width: 350px; height: 170px; overflow: hidden; }
-.aspect_4_5 { width: 80px; height: 100px; overflow: hidden;}
+.aspect_1_1 {height: 50px; overflow: hidden;}
+.aspect_5_3 {height: 170px; overflow: hidden; }
+.aspect_4_5 {height: 100px; overflow: hidden;}
 
 /* 홈화면에 인기글 부분에 넣을 프로필 이미지 */
 .profileImage{

@@ -16,6 +16,7 @@
 <br>
 <br>
 <br>
+    <div class="hide userEmail"><%= user.email %></div>
   <p class="text-center chat-list-title"><%= user.name %>님의 대화 목록입니다</p>
 
   <section class="card-holder">
@@ -41,9 +42,9 @@
                   <% }) %>
                 </div>
                   
-                <div class="footer">
+                <div class="footer ound hollow text-center">
                   <input type="hidden" name="postId" value="<%= post._id %>">
-                  <button type="button" class="btn btn-default btn-block enter-chat">대화하기</button>
+                    <a href="#" class="open-btn addClass" class=""><i class="fa fa-whatsapp" aria-hidden="true"></i> Click Here</a>
                 </div>
               </div>
           </div>
@@ -57,19 +58,96 @@
       <br>
 
   </div> <!--container-fluid end -->
-  <div class="text-center" id="chat-room">
-    채팅방~~~~
 
-  </div>
+
+
+
+        <!-- 채팅창 팝업부분 -->
+<aside id="sidebar_secondary" class="tabbed_sidebar ng-scope chat_sidebar sidebar_secondary">
+
+<div class="popup-head">
+    			<div class="popup-head-left pull-left">
+                    <a Design and Developmenta title="Gurdeep Osahan (Web Designer)" target="_blank" href="https://web.facebook.com/iamgurdeeposahan">
+                    <img class="md-user-image" alt="Gurdeep Osahan (Web Designer)"
+                                    src="<%= user.facebook.picture.data.url %>" 
+                                    title="Gurdeep Osahan (Web Designer)" 
+                                    alt="Gurdeep Osahan (Web Designer)"/>
+                    <h1><%= user.name %></h1><small><br></a></div>
+					  <div class="popup-head-right pull-right">
+						<button data-widget="remove" class="chat-header-button pull-right removeClass" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+                      </div>
+			    </div>
+
+<div id="chat" class="chat_box_wrapper chat_box_small chat_box_active" style="opacity: 1; display: block; transform: translateX(0px);">
+                        <div class="chat_box touchscroll chat_box_colors_a">
+
+                            <div class="chat_message_wrapper">
+                                <div class="chat_user_avatar">
+                                    <a href="https://web.facebook.com/iamgurdeeposahan" target="_blank" >
+                                    <img alt="Gurdeep Osahan (Web Designer)" title="Gurdeep Osahan (Web Designer)"  src="http://www.webncc.in/images/gurdeeposahan.jpg" class="md-user-image">
+                                    </a>
+                                </div>
+                                <ul class="chat_message">
+                                    <li>
+                                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, eum? </p>
+                                    </li>
+                                    <li>
+                                        <p> Lorem ipsum dolor sit amet.<span class="chat_message_time">13:38</span> </p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="chat_message_wrapper chat_message_right">
+                                <div class="chat_user_avatar">
+                                <a href="https://web.facebook.com/iamgurdeeposahan" target="_blank" >
+                                    <img alt="Gurdeep Osahan (Web Designer)" src="http://bootsnipp.com/img/avatars/bcf1c0d13e5500875fdd5a7e8ad9752ee16e7462.jpg" class="md-user-image">
+                                </a>
+                                </div>
+                                <ul class="chat_message">
+                                    <li>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus distinctio dolor earum est hic id impedit ipsum minima mollitia natus nulla perspiciatis quae quasi, quis recusandae, saepe, sunt totam.
+                                            <span class="chat_message_time">13:34</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    
+</div>
+
+<div class="chat_submit_box">
+    <div class="uk-input-group">
+        <div class="gurdeep-chat-box">
+
+        <input type="text" placeholder="Type a message" id="submit_message" name="submit_message" class="md-input">
+        <span style="vertical-align: sub;" class="uk-input-group-addon">
+        <a href="#"><i class="fa fa-camera"></i></a>
+        </span>
+        </div>
+    
+    <span class="uk-input-group-addon">
+    <a href="#"><i class="glyphicon glyphicon-send"></i></a>
+    </span>
+    </div>
+</div>
+        
+        </div>
+
+</aside>
+
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
+    <script src="/javascripts/chat/chatList.js"></script>
     <script src="/javascripts/chat/chatIndex.js"></script>
     <script src="/javascripts/chat/socket.js"></script>
     <script>
-     
+
     </script>
  
     <pre>

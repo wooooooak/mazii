@@ -13,8 +13,6 @@ const Chat = new mongoose.Schema({
     },
     
     content:String,
-    upvote:Number,
-    count:Number, //조회수
     chat:[String],
     chatWait:[{
         type : mongoose.Schema.Types.ObjectId,
