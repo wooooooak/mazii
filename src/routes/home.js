@@ -98,14 +98,14 @@ router.get('/alarm', function(req, res, next) {
 router.get('/chatList', function(req, res, next) {
   if (!req.user) {
       console.log('사용자 인증 안된 상태임.'); //사실 로그인 안하면 chatList로 이동하는 버튼이 없다.
-      res.render('chatList.ejs',{user:null});
+      res.render('chat_list.ejs',{user:null});
   }else{
     console.log("req.user.id = "+req.user._id);
       User.findById(req.user._id).populate(['chatAttendedPost',
                 {path:'chatAttendedPost',populate:{path:'author'}},
                 {path:'chatAttendedPost',populate:{path:'chatAttendee'}}]).exec((err,user)=>{
         // console.log(alarm);
-        res.render('chatList.ejs',{
+        res.render('chat_list.ejs',{
           user : user
         });
 

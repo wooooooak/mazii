@@ -102,7 +102,7 @@ router.put('/post/postWrite',(req,res,next)=>{
       if(err) console.log(err);
       // console.log(post);
       let title = '수정하기';
-      res.render('postModify',{
+      res.render('post_modify',{
         user : req.user,
         title : title,
         travelInfo : post

@@ -134,17 +134,17 @@ aside {
 }
 .chat_box .chat_message_wrapper {
     margin-bottom: 32px;
-}
+}   
 .md-user-image {
     border-radius: 50%;
     width: 34px;
-}
-img {
     border: 0 none;
     box-sizing: border-box;
     height: auto;
     max-width: 100%;
     vertical-align: middle;
+}
+.md-user-image {
 }
 .chat_box .chat_message_wrapper ul.chat_message, .chat_box .chat_message_wrapper ul.chat_message > li {
     list-style: outside none none;

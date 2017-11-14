@@ -5,13 +5,14 @@
     table을 하고 margin 좌우를 auto로! 
     Modern Brouwer만 호환 IE8이상
     */
-    display: table; 
+    /* display: table;  */
     margin: 50px auto 10px auto;
-    padding: 0 200px 10px 200px ;
+    padding: 0 21vw 10px 21vw ;
 }
 
 .popularRow{
     margin-bottom: 50px;
+    
 }
 .popularRow a{
     text-decoration: none;
@@ -20,9 +21,9 @@
 .popularRow a:link{
     color:inherit;
   }
-  .popularRow a:visited{
+.popularRow a:visited{
     color:inherit;
-  }
+}
   
 
 .popularRowStartDay{
@@ -32,7 +33,7 @@
     font-size: 10px
 }
 
-/* index의 인기글에서는 사진 보여주지 않음 */
+/* index의 인기글에서는 content의 사진 보여주지 않음 */
 .popularContent p img{
     display: none;
 }

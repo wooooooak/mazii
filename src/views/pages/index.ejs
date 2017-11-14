@@ -12,31 +12,8 @@
 
       <div class="index-container text-center">
             <p class="indexTitles">Weekly Best Trip</p>
-        <% if(popularPost) {%>
-              <% let length = popularPost.length %>
-              <% popularPost.forEach((post,index)=>{ %>
-                <% if(index === 0 || index === 3 || index == 6) { %>
-                  <div class="row popularRow">
-                  <% } %>
+            <% include ../partials/home/popular %>
 
-                  <div class="col-xs-12 col-md-4">
-                  <a href="#">
-                    <div class="aspect_5_3">
-                        <img src="<%= post.author.facebook.picture.data.url %>" class="profileImage"/>
-                    </div>
-                      <div class=""><%= post.author.name %>, <%= post.city %>
-                      </div>
-                      <span class="popularRowStartDay"><%= post.Date.start%></span>~
-                      <span class="popularRowEndDay"><%= post.Date.end%></span>
-                      <div class="popularContent"> <%= post.content %> </div>
-                      </a>
-                  </div>
-
-                <% if(index === 2 || index === 5 || index == 8|| index == length) { %>
-                </div>
-                <% } %>
-              <% }) %>
-        <%} %>    
       </div>
   </div>
 

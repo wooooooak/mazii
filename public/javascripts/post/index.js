@@ -5,9 +5,9 @@ function showPost(data){
     let left_side_flag=false;
     let center_side_flag=false;
     let right_side_flag=false;
-    // console.log('side_flag = '+left_side_flag);
+
     let authorEmail = $('#userEmail').text().trim();
-    // console.log('현재 로그인된 이메일 ' + authorEmail);
+
     data.posts.forEach((post,index)=>{
         let status = 'show';
         let chatTemp = '<button class="btn-secondary like-review">'+
@@ -24,7 +24,7 @@ function showPost(data){
             })
 
             post.chatAttendee.forEach(objectValue=>{
-                if(objectValue==data.user._id){
+                if(objectValue==data.user._id || authorEmail==post.author.email){
                     console.log("유저가 채팅 승락배열에 존재함");
                     chatTemp = '<button class="btn-secondary btn-enter-chat addClass">'+
                     '<i class="fa fa-comments " aria-hidden="true"></i>채팅방 들어가기'+
@@ -35,14 +35,7 @@ function showPost(data){
 
         if(authorEmail!=post.author.email){
             status = 'hide';
-        }else{
-            //글 작성자는 chatOk배열에 없으므로 따로 처리해줌
-            chatTemp = '<button class="btn-enter-chat addClass">'+
-            '<i class="fa fa-comments" aria-hidden="true"></i>채팅방 들어가기'+
-        '</button>';
         }
-        
-
 
         if(index%3===0){
             if(left_side_flag){
@@ -80,6 +73,8 @@ function showPost(data){
                 right_side_flag=true;
             }
         }
+
+        
     }) //forEach문 끝
 
 
@@ -105,9 +100,8 @@ function delFirstLine(arrayCnt){
     }
 }
 
-function postTemplate(post,status,chatTemp){
 
-    
+function postTemplate(post,status,chatTemp){
     return '<div class="feed-card rollIn">'+
     '<div class="feed-panel-header"> <img src="'
     +post.author.facebook.picture.data.url+'" class="img-circle aspect_1_1"/>'
@@ -128,21 +122,18 @@ function postTemplate(post,status,chatTemp){
 }
 
 
-
 function setDeleteBtn(cityName){
     $('.delete-btn').click((event)=>{
         let $this = $(event.currentTarget)
-        console.log(event.target.parentNode.getElementsByTagName("span")[2].innerHTML);
+        // console.log(event.target.parentNode.getElementsByTagName("span")[2].innerHTML);
         let postId = event.target.parentNode.getElementsByTagName("span")[2].innerHTML;
-        console.log($this.parent().parent());
-        console.log($this.parent().parent().removeClass().addClass("animated bounce"));
+        // console.log($this.parent().parent());
+        // console.log($this.parent().parent().removeClass().addClass("animated bounce"));
         $.ajax({
             type:"DELETE",
             url:'/api/post/deleteById/'+cityName+'/'+postId,
             dataType : "json",
         }).success((data)=>{
-            console.log("delete 하고난 뒤 : ---");
-            console.log(data);
             showPost(data);
             setDeleteBtn(cityName);//이걸 또 추가하는게 효율적인지 모르겟다. 
         }).fail( err =>{
