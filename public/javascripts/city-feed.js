@@ -29,7 +29,16 @@ $(function(){
             //데이터가 생성되기도 전에 설정되는거라 delete-btn이 뭔지 모른다.
             //당연히 데이터를 받아오기 이전에 해도 안된다.
             setDeleteBtn(cityName);
-            
+            setSocket();
+            $(function(){
+                $(".addClass").click(function () {
+                  $('.sidebar_secondary').addClass('popup-box-on');
+                    });
+                  
+                    $(".removeClass").click(function () {
+                  $('.sidebar_secondary').removeClass('popup-box-on');
+                    });
+                })
         })
         .fail((err)=>{
             alert(err);
@@ -71,6 +80,10 @@ $(function(){
                 alert(err);
             })
         })
+        $('.btn-enter-chat').click(function(){
+            alert('dd')
+        })
+        
 });
 
 
@@ -115,3 +128,4 @@ $(function(){
     });
 
 
+    

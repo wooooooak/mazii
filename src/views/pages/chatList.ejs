@@ -44,7 +44,7 @@
                   
                 <div class="footer ound hollow text-center">
                   <input type="hidden" name="postId" value="<%= post._id %>">
-                    <a href="#" class="open-btn addClass" class=""><i class="fa fa-whatsapp" aria-hidden="true"></i> Click Here</a>
+                    <a href="#" class="open-btn addClass" class=""><i class="fa fa-comments" aria-hidden="true"></i> Click Here</a>
                 </div>
               </div>
           </div>
@@ -72,11 +72,12 @@
                                     src="<%= user.facebook.picture.data.url %>" 
                                     title="Gurdeep Osahan (Web Designer)" 
                                     alt="Gurdeep Osahan (Web Designer)"/>
-                    <h1><%= user.name %></h1><small><br></a></div>
-					  <div class="popup-head-right pull-right">
-						<button data-widget="remove" class="chat-header-button pull-right removeClass" type="button"><i class="glyphicon glyphicon-remove"></i></button>
-                      </div>
-			    </div>
+                    <h1><%= user.name %></h1><small><br></a>
+                </div>
+                <div class="popup-head-right pull-right">
+                    <button data-widget="remove" class="chat-header-button pull-right leave-btn removeClass" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+</div>
 
 <div id="chat" class="chat_box_wrapper chat_box_small chat_box_active" style="opacity: 1; display: block; transform: translateX(0px);">
                         <div class="chat_box touchscroll chat_box_colors_a">
@@ -112,7 +113,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            
+
                         </div>
                     
 </div>
@@ -122,9 +123,6 @@
         <div class="gurdeep-chat-box">
 
         <input type="text" placeholder="Type a message" id="submit_message" name="submit_message" class="md-input">
-        <span style="vertical-align: sub;" class="uk-input-group-addon">
-        <a href="#"><i class="fa fa-camera"></i></a>
-        </span>
         </div>
     
     <span class="uk-input-group-addon">
@@ -138,11 +136,16 @@
 </aside>
 
 
+    <pre>
+      채팅 갯수 <%= ListCount %>
+      <br>
+      <%= chatList[0] %>
+    </pre>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script src="/javascripts/chat/chatList.js"></script>
     <script src="/javascripts/chat/chatIndex.js"></script>
     <script src="/javascripts/chat/socket.js"></script>
@@ -150,10 +153,5 @@
 
     </script>
  
-    <pre>
-      채팅 갯수 <%= ListCount %>
-      <br>
-      <%= chatList[0] %>
-    </pre>
 </body>
 </html>

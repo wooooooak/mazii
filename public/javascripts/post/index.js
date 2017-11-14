@@ -26,8 +26,8 @@ function showPost(data){
             post.chatOk.forEach(objectValue=>{
                 if(objectValue==data.user._id){
                     console.log("유저가 채팅 승락배열에 존재함");
-                    chatTemp = '<button class="btn-secondary btn-enter-chat">'+
-                    '<i class="fa fa-comments" aria-hidden="true"></i>채팅방 들어가기'+
+                    chatTemp = '<button class="btn-secondary btn-enter-chat addClass">'+
+                    '<i class="fa fa-comments " aria-hidden="true"></i>채팅방 들어가기'+
                 '</button>'
                 }
             })
@@ -37,7 +37,7 @@ function showPost(data){
             status = 'hide';
         }else{
             //글 작성자는 chatOk배열에 없으므로 따로 처리해줌
-            chatTemp = '<button class="btn-enter-chat">'+
+            chatTemp = '<button class="btn-enter-chat addClass">'+
             '<i class="fa fa-comments" aria-hidden="true"></i>채팅방 들어가기'+
         '</button>';
         }
@@ -119,9 +119,10 @@ function postTemplate(post,status,chatTemp){
       post.content+
     '</div></a>'+
     '<div class="feed-panel-footer">'+
-        '<div class="like-content">'+
-            chatTemp
-        '</div>'+
+    '<div class="like-content">'+
+    chatTemp+
+    '<input type="hidden" value="'+post.author.email+'"/>'+
+    '</div>'+
     '</div>'+
   '</div>'
 }
@@ -149,3 +150,4 @@ function setDeleteBtn(cityName){
         })
     });
 }
+

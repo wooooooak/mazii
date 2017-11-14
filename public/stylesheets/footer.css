@@ -1,0 +1,21 @@
+footer {
+    background: #ffffff;
+    border-top: 0.1625em solid lightgrey;
+    bottom: 0; /* !important helps maintain set height */
+    color: #000000;   
+    height: 5em; /* !important - must be < = body margin-bottom*/
+
+    left: 50px; right: 50px
+  }
+  
+  .font_center { text-align: center; }
+  .font_left { 
+    left:100px; 
+    position: absolute; 
+  }
+  .font_right { right:100px; position: absolute;  }
+  .a { word-spacing: 30px; }
+  .h1 { font-size: 20px; }
+  .font_bold { font-weight: bold; }
+  .font_color { color: gray; }
+  .font_color1 { color:rgba(65, 64, 64, 0.747); }
