@@ -13,9 +13,6 @@ const Post = new mongoose.Schema({
         end : Date,
     },
     content:String,
-    // upvote:Number,
-    // count:Number, //조회수
-    // chatRoomName : {type : String, lowercase:true, unique:true}, //그냥_id로..
     message:[{
         type : mongoose.Schema.Types.ObjectId,
         ref : 'Message'
@@ -24,10 +21,10 @@ const Post = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
     }],
-    chatOk:[{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'Post'
-    }],
+    // chatOk:[{
+    //     type : mongoose.Schema.Types.ObjectId,
+    //     ref : 'Post'
+    // }],
     chatAttendee:[{
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'

@@ -1,15 +1,15 @@
+$('.input-group.date').datepicker({
+    calendarWeeks: false,
+    todayHighlight: true,
+    autoclose: true,
+    format: "yyyy/mm/dd",
+    language: "kr"
+});
 
 $(function(){
 
     let city = $('.lead').html(); //도시이름 받아옴.
     // console.log('성공 이제 ajax로 데이터 넘겨받자.');
-    $('.input-group.date').datepicker({
-        calendarWeeks: false,
-        todayHighlight: true,
-        autoclose: true,
-        format: "yyyy/mm/dd",
-        language: "kr"
-    });
 
     let startDate = $('#startDate').val();
     let endDate = $('#endDate').val();
@@ -44,88 +44,82 @@ $(function(){
             alert(err);
         });
 
-
-        $(document).on('click', '.like-review', function(e) {
-            $(this).html('<i class="fa fa-comments" aria-hidden="true"></i> 승낙 대기중');
-            $(this).children('.fa-comments').addClass('animate-like');
-            let postId =  e.target.parentNode.parentNode.parentNode.getElementsByTagName("span")[2].innerHTML;
-            $.ajax({
-                type:"PUT",
-                url:'/api/post/chatRequest/'+postId,
-                dataType : "text",
-            }).success(data=>{
-                console.log(data);
-            }).fail(err=>{
-                console.log(err);
-            })
-        });
-
-        $('#datePicker-search').click((e)=>{
-
-            console.log($('#cityName').val());
-
-            $.ajax({
-                type:"POST",
-                url:'/api/post/getAllBetweenDate',
-                data:{
-                    cityName:$('#cityName').val(),
-                    startDate:$('#startDate').val(),
-                    endDate:$('#endDate').val()
-                },
-                dataType : "json",
-            }).success(data=>{
-                console.log(data);
-                showPost(data);
-            }).fail((err)=>{
-                alert(err);
-            })
-        })
-        $('.btn-enter-chat').click(function(){
-            alert('dd')
-        })
-        
 });
 
 
-(function($) {
-      $.fn.visible = function(partial) {
-        
-          var $t            = $(this),
-              $w            = $(window),
-              viewTop       = $w.scrollTop(),
-              viewBottom    = viewTop + $w.height(),
-              _top          = $t.offset().top,
-              _bottom       = _top + $t.height(),
-              compareTop    = partial === true ? _bottom : _top,
-              compareBottom = partial === true ? _top : _bottom;
-        
-        return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
-    
-      };
-        
-    })(jQuery);
-    
-    var win = $(window);
-    
-    var allMods = $(".panel");
-    
-    allMods.each(function(i, el) {
-      var el = $(el);
-      if (el.visible(true)) {
-        el.addClass("already-visible"); 
-      } 
-    });
-    
-    win.scroll(function(event) {
-      
-      allMods.each(function(i, el) {
-        var el = $(el);
-        if (el.visible(true)) {
-          el.addClass("come-in"); 
-        } 
-      });
-      
-    });
+$(document).on('click', '.like-review', function(e) {
+    $(this).html('<i class="fa fa-comments" aria-hidden="true"></i> 승낙 대기중');
+    $(this).children('.fa-comments').addClass('animate-like');
+    let postId =  e.target.parentNode.parentNode.parentNode.getElementsByTagName("span")[2].innerHTML;
+    $.ajax({
+        type:"PUT",
+        url:'/api/post/chatRequest/'+postId,
+        dataType : "text",
+    }).success(data=>{
+        console.log(data);
+    }).fail(err=>{
+        console.log(err);
+    })
+});
 
 
+
+$('#datePicker-search').click((e)=>{
+    console.log($('#cityName').val());
+    $.ajax({
+        type:"POST",
+        url:'/api/post/getAllBetweenDate',
+        data:{
+            cityName:$('#cityName').val(),
+            startDate:$('#startDate').val(),
+            endDate:$('#endDate').val()
+        },
+        dataType : "json",
+    }).success(data=>{
+        console.log(data);
+        showPost(data);
+    }).fail((err)=>{
+        alert(err);
+    })
+})
+
+
+// (function($) {
+//       $.fn.visible = function(partial) {
+        
+//           var $t            = $(this),
+//               $w            = $(window),
+//               viewTop       = $w.scrollTop(),
+//               viewBottom    = viewTop + $w.height(),
+//               _top          = $t.offset().top,
+//               _bottom       = _top + $t.height(),
+//               compareTop    = partial === true ? _bottom : _top,
+//               compareBottom = partial === true ? _top : _bottom;
+        
+//         return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
     
+//       };
+        
+//     })(jQuery);
+    
+//     var win = $(window);
+    
+//     var allMods = $(".panel");
+    
+//     allMods.each(function(i, el) {
+//       var el = $(el);
+//       if (el.visible(true)) {
+//         el.addClass("already-visible"); 
+//       } 
+//     });
+    
+//     win.scroll(function(event) {
+      
+//       allMods.each(function(i, el) {
+//         var el = $(el);
+//         if (el.visible(true)) {
+//           el.addClass("come-in"); 
+//         } 
+//       });
+      
+//     });

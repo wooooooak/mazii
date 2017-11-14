@@ -23,7 +23,7 @@ function showPost(data){
                 }
             })
 
-            post.chatOk.forEach(objectValue=>{
+            post.chatAttendee.forEach(objectValue=>{
                 if(objectValue==data.user._id){
                     console.log("유저가 채팅 승락배열에 존재함");
                     chatTemp = '<button class="btn-secondary btn-enter-chat addClass">'+
