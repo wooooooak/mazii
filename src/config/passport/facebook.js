@@ -20,9 +20,13 @@ module.exports = function(app, passport) {
 	    User.findOne(options.criteria).populate('Alarms').exec(function (err, user) {
 			if (err) return done(err);
 			if (!user) {
+				let email ;
+				if(!profile.emails){
+					email = user._id;
+				}
 				var user = new User({
 					name: profile.displayName,
-					email: profile.emails[0].value,
+					email: email,
 					provider: 'facebook',
 					authToken: accessToken,
 					facebook: profile._json

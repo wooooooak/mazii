@@ -1,4 +1,4 @@
-const socket = io.connect("http://localhost:8081");
+const socket = io.connect("http://123.248.53.76:8081");
 let userEmail = $('.userEmail').text();
 let roomId;
 

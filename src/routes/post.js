@@ -30,7 +30,7 @@ module.exports = function(app){
 
 router.put('/post/postWrite',(req,res,next)=>{
     let title = "여행";
-    res.render('postWrite',{
+    res.render('post_write',{
       user : req.user,
       title : title
     })
@@ -40,7 +40,7 @@ router.put('/post/postWrite',(req,res,next)=>{
   router.post('/post/toPostPage',(req,res,next)=>{
     let title = "글쓰기";
     console.dir(req.body);
-      res.render('postWrite',{
+      res.render('post_write',{
         user: req.user,
         title : title,
         travelInfo : req.body

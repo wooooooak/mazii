@@ -2,7 +2,7 @@
  * feed 부분에서 채팅 참여할때 필요한 소켓 코드
  */
 
-const socket = io.connect("http://localhost:8081");
+const socket = io.connect("http://123.248.53.76:8081");
 let userEmail;
 let roomId;
 function setSocket(){
