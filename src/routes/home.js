@@ -74,44 +74,6 @@ router.get('/city/:city',(req,res,next)=>{
   }
 });
 
-//alarm 메시지 확인하는 페이지로 요청
-router.get('/alarm', function(req, res, next) {
-  let title = '여행';
-  if (!req.user) {
-      console.log('사용자 인증 안된 상태임.'); //사실 로그인 안하면 alarm으로 이동하는 버튼이 없다.
-      res.render('alarm.ejs',{user:null,title:title});
-  }else{
-    console.log(req.user);
-      Alarm.find({'to':req.user._id}).populate(['from','post']).exec((err,alarm)=>{
-        console.log("알람 =");
-        console.log(alarm);
-        res.render('alarm.ejs',{
-          user : req.user,
-          title : title,
-          Alarms : alarm
-        });
-      })
-  }
-});
-
-//채팅 리스트 보는페이지로 요청
-router.get('/chatList', function(req, res, next) {
-  if (!req.user) {
-      console.log('사용자 인증 안된 상태임.'); //사실 로그인 안하면 chatList로 이동하는 버튼이 없다.
-      res.render('chat_list.ejs',{user:null});
-  }else{
-    console.log("req.user.id = "+req.user._id);
-      User.findById(req.user._id).populate(['chatAttendedPost',
-                {path:'chatAttendedPost',populate:{path:'author'}},
-                {path:'chatAttendedPost',populate:{path:'chatAttendee'}}]).exec((err,user)=>{
-        // console.log(alarm);
-        res.render('chat_list.ejs',{
-          user : user
-        });
-
-      })
-    }
-  });
   
 
 // url의 pathname이 Mexico city -> Mexicocity로 파싱

@@ -64,7 +64,7 @@ router.put('/post/postWrite',(req,res,next)=>{
       postId = insertPost(req.body,userId);
       
       user.chatAttendedPost.push(mongoose.Types.ObjectId(postId));
-      user.save((err,user)=>{
+      user.save((err,user)  =>{
         if(err) console.log(err);
       })
     })
