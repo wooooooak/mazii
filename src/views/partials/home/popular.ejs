@@ -1,3 +1,5 @@
+<div>
+<p class="indexTitles">The most recent Trip</p>
 <% if(popularPost) {%>
               <% let length = popularPost.length %>
               <% popularPost.forEach((post,index)=>{ %>
@@ -5,7 +7,7 @@
                   <div class="row popularRow">
                   <% } %>
 
-                  <div class="col-xs-12 col-md-4">
+                  <div class="col-xs-6 col-md-4">
                   <a href="#">
                     <div class="aspect_5_3">
                         <img src="<%= post.author.facebook.picture.data.url %>" class="profileImage"/>
@@ -22,4 +24,5 @@
                 </div>
                 <% } %>
               <% }) %>
-        <%} %>   
+        <%} %>
+</div>

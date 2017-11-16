@@ -12,10 +12,10 @@ module.exports = function(app){
     
   }
 /* GET home page. */
-//인기글을 보여줘야 하지만 일단은 최신꺼만 6개 보여주자
+//최신꺼만 9개 보여주자
 router.get('/', function(req, res, next) {
   // let dateInfoArr=[];
-  Post.find().limit(9).sort({'createAt':'asc'}).populate('author').exec((err,posts)=>{
+  Post.find().limit(9).sort({'createdAt':'desc'}).populate('author').exec((err,posts)=>{
     if(err) console.log(err);
     // posts.forEach((post,index)=>{
     //   let data = new Date(post.Date.start);

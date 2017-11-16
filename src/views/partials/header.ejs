@@ -5,28 +5,30 @@
                               <% }) %>
                               <% } %>
  <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top">
+    <nav class="navbar navbar-static-top navbar-fixed-top">
         <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/">
-                        <img alt="Mazii" src="">
+                        Mazii
                     </a>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item">
-                        <div class="form-group form-inline " id="citySearch">
-                            <a type="text" class="form-control btn btn-default"  href='/cities' role="button">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                             어디로 가세요?   
+                        <div class="form-group form-inline" id="citySearch">
+                            <a type="text" class="form-control btn btn-default headerSearchBtn"  href='/cities' role="button">
+                            <span class="glyphicon glyphicon-search pull-left" aria-hidden="true"></span>
+                            <p class="text-left whereToGo">
+                              where do you go?   
+                             </p>
                             </a>
                         </div>
                     </li>
                     <li class="nav-item navbar-right">
                         <% if(!user) { %>
                           <p class="navbar-text navbar-right">
-                            <a class="nav-link" href="/auth/facebook">Login</a>
+                            <a class="nav-link FBlogin animated bounce" href="/auth/facebook">Facebook Login</a>
                           </p>
                         <% } else{ %>
-                            <a class="nav-link" href="/auth/logout">Logout</a>
+                            <a class="nav-link " href="/auth/logout">Logout</a>
                             <li class="nav-item navbar-right">
                               <a href="/alarm">Alarms <span class="badge asd">
                               <% if(user) { %>
@@ -53,5 +55,4 @@
             </pre>   
             <% } %>-->
     </nav>
-    
 <!-- Fixed navbar -->

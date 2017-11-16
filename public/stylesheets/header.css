@@ -1,0 +1,36 @@
+.navbar {
+    background: white;
+    padding: 0px 0px 0px 20vw;
+}
+
+.navbar a {
+    color : black;
+    
+}
+
+.whereToGo{
+    margin-left:1.5em;
+    color: rgb(97, 95, 95);
+}
+.headerSearchBtn{
+    margin-left : -30px;
+}
+
+.headerSearchBtn:hover{
+    background-color:white;
+}
+
+a.FBlogin{
+    margin-left: -50px;
+    color:rgb(6, 152, 243); 
+    font-family: 'Courgette', cursive;
+    font-size: 1.1em;
+}
+
+a.FBlogin:hover{
+    text-decoration: none;
+}
+
+.navbar-brand{
+    font-family: 'Courgette', cursive;
+}

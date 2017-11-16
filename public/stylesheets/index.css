@@ -40,11 +40,12 @@
 
 
 /* Weekly Best Trip 문구 */
-.indexTitles {
+.indexTitles{
     font-size: 30px;
   animation-duration: 2s;
   animation-name: slidein;
   margin-bottom: 30px;
+ 
 }
 
 @keyframes slidein {

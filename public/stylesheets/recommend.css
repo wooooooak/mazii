@@ -1,0 +1,35 @@
+.recommend-container{
+    /* margin: 0 -12vw 0 -10vw; */
+    margin: 0 -3vw 0 -5vw;
+}
+
+.rcm-img-box{
+    width: 30vw; 
+    /* overflow: hidden; */
+    box-shadow: 15px 10px 60px;
+    
+}
+
+
+.rcm-img-box img{
+    width: 33vw; height: 40vh;  margin-left: -15px;
+}
+
+.city-desc-right{
+    position: absolute;
+    margin-left : 34vw;
+    font-size: 16px;
+}
+.city-desc-left{
+    position: absolute;
+    margin-left : -16vw;
+    font-size: 16px;
+}
+.rcm-row{
+    margin-bottom: 130px;
+}
+.cmd-desc-title{
+    font-size: 60px;
+    font-family: 'Anton', sans-serif;
+    color: #605E5E;
+}
