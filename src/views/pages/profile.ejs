@@ -8,14 +8,13 @@
 <% include ../partials/header %>
 <!-- Fixed navbar -->
 
-
     <div class="container">
 
-        <% if(user) {%>
+        <% if(otherUser) {%>
           <h2>
-            <%= user.name %>
-            <%= user.email %>
-            <%= user._id %>
+            <%= otherUser.name %>
+            <%= otherUser.email %>
+            <%= otherUser._id %>
           </h2>
         <%} %>    
 

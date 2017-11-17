@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+const Post = require('../model/Posts');
+const User = require('../model/Users');
 
 /* GET users listing. */
 module.exports = function(app){
@@ -28,21 +30,25 @@ router.route('/auth/google/callback').get(passport.authenticate('google', {
   failureRedirect : '/profile'
 }));
 
-router.get('/auth/profile',(req,res)=>{
-  // 인증 안된 경우
-  if (!req.user) {
-    console.log('사용자 인증 안된 상태임.');
-    res.redirect('/');
-  } else {
-      console.log('사용자 인증된 상태임.');
-      console.log('/profile 패스 요청됨.');
+//다른사람의 프로필을 눌렀을 경우
+router.get('/auth/profile/:email',(req,res)=>{
+    let userEmail = req.params.email;
+    console.log(userEmail);
+    if(!req.params.email){
+      userEmail = req.user.email;
+    }
+    let otherUser; 
+    User.findOne({'email':userEmail}).exec((err,user)=>{
+      if(err) console.log(err);
+      otherUser = user;
+      console.log(otherUser);
+    }).then((user)=>{
+      res.render('profile.ejs',{
+        user : req.user,
+        otherUser : user
+      });
 
-      if (Array.isArray(req.user)) {
-          res.render('profile.ejs', {user: req.user[0]._doc});
-      } else {
-          res.render('profile.ejs', {user: req.user});
-      }
-  }
+    });
 });
 
 router.get('/auth/logout',(req,res)=>{
