@@ -24,9 +24,10 @@ module.exports = function(app, passport) {
 				if(!profile.emails){
 					email = user._id;
 				}
+				console.dir(profile);
 				var user = new User({
 					name: profile.displayName,
-					email: email,
+					email: profile.emails[0].value,
 					provider: 'facebook',
 					authToken: accessToken,
 					facebook: profile._json

@@ -12,6 +12,7 @@ module.exports = function(server){
     console.log('socket.io 요청을 받아들일 준비 완료');
     
     let usersUrl={}; //
+    let emailToSocketId={};
     
     //클라이언트 소켓이 연결되었을떄
     io.sockets.on('connection', (socket) => {
@@ -23,8 +24,10 @@ module.exports = function(server){
         console.log('disconnected');
       });
     
-      //사용자가 대화하기 버튼을 눌렀을때. room:{roomId:postId,roomOwner:글쓴이 이메일}
+      //사용자가 대화하기 버튼을 눌렀을때
       socket.on('enter', room => {
+        console.log("접속한 클라이언트의 id = " + socket.id);
+        emailToSocketId[room.userEmail] = socket.id;
         console.log('enter 이벤트 받음');
         // console.dir(room);
     
@@ -49,7 +52,9 @@ module.exports = function(server){
           console.log('message db 꺼');
           console.log(message);
         }).then(message=>{
-          io.sockets.emit('initChatRoom',message);
+          //여기서는 대화하기 버튼을 누른사람에 한해서만 emit시켜야 된다.
+          //그렇지 않으면 대화중이던 다른사람들도 대화창이 초기화된다.
+          io.sockets.connected[emailToSocketId[room.userEmail]].emit('initChatRoom',message);
         })
         
 
@@ -99,7 +104,7 @@ module.exports = function(server){
         socket.leave(roomId);
         console.log('방을 나갔습니다.');
 
-        console.dir(io.sockets.adapter.rooms);
+        // console.dir(io.sockets.adapter.rooms);
       })
 
 

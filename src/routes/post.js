@@ -50,11 +50,13 @@ router.put('/post/postWrite',(req,res,next)=>{
   router.post('/post/finish',(req,res,next)=>{
     let userId = ObjectId;
     let email = req.body.email;
+    console.log("email : "+email);
     let city = req.body.city;
     let postId ; 
     User.findOne({email:email}).exec((err,user)=>{
       if(err) console.log("에러입니다");
       else{
+        console.log(user);
         userId = user._id;
 
         // console.log("typeof userId "+typeof(userId));
