@@ -21,3 +21,14 @@ $('.chatReqAcceptBtn').click(function(e){
         $(this).addClass('hide');
     });
     
+$('time').attr('datetime',function(index,time){
+    
+    let day = time.slice(8,10);
+    let month = time.slice(4,7);
+    
+    $(this).children(".day").text(day);
+    $(this).children(".month").text(month);
+
+    console.log(day,month);
+
+});

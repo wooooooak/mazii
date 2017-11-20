@@ -21,8 +21,9 @@ router.get('/chatList', function(req, res, next) {
       console.log("req.user.id = "+req.user._id);
         User.findById(req.user._id).populate(['chatAttendedPost',
                   {path:'chatAttendedPost',populate:{path:'author'}},
-                  {path:'chatAttendedPost',populate:{path:'chatAttendee'}}]).exec((err,user)=>{
-          // console.log(alarm);
+                  {path:'chatAttendedPost',populate:{path:'chatAttendee'}},
+                'Alarms']).exec((err,user)=>{
+          console.log(user);
           res.render('chat_list.ejs',{
             user : user
           });
