@@ -6,6 +6,6 @@ $(function(){
         $(".removeClass").click(function () {
       $('.sidebar_secondary').removeClass('popup-box-on');
         });
+        
 })
 
-// $('.chat_box').scrollTop($('.chat_box').prop('scrollHeight'));

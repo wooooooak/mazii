@@ -68,14 +68,13 @@ $('.md-input').keypress(function(event){
 });
 
 socket.on('message',output=>{
-    // console.log('받은데이터');
     // console.log(output);
     let whoSendClass = ''
     if(output.userEmail==userEmail){
         whoSendClass = 'chat_message_right';
     }
     appendChatBox(whoSendClass,output)
-
+    $('.chat_box_small').scrollTop($('.chat_box').prop('scrollHeight'));
 });
 
 socket.on('initChatRoom',messages=>{
@@ -87,6 +86,6 @@ socket.on('initChatRoom',messages=>{
             appendChatBox('',message);
         }
     })
-
+    $('.chat_box_small').scrollTop($('.chat_box').prop('scrollHeight'));
 })
 

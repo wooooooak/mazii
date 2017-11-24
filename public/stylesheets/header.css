@@ -1,6 +1,7 @@
 .navbar {
     background: white;
-    padding: 0px 0px 0px 20vw;
+    padding: 0px 0vw 0px 20vw;
+    margin-left: -10vw
 }
 
 .navbar a {

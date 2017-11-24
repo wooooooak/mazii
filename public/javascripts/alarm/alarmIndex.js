@@ -19,6 +19,8 @@ $('.chatReqAcceptBtn').click(function(e){
             console.log(err);
         })
         $(this).addClass('hide');
+        $(this).parent().addClass('hide');
+
     });
     
 $('time').attr('datetime',function(index,time){

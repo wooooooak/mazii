@@ -20,7 +20,7 @@ router.get('/alarm', function(req, res, next) {
         res.render('alarm.ejs',{user:null,title:title});
     }else{
       console.log(req.user);
-        Alarm.find({'to':req.user._id}).populate(['from','post']).exec((err,alarm)=>{
+        Alarm.find({'to':req.user._id}).populate(['from','post']).sort({'createdAt':'desc'}).exec((err,alarm)=>{
           console.log("알람 =");
           console.log(alarm);
           res.render('alarm.ejs',{
