@@ -9,6 +9,10 @@
 
 .font_english { font-family: 'Courgette', cursive; }
 
+.padding-left {
+  padding-left:170px;
+}
+
 .city_feed_container{
   background: #FAFAFA;
 }
@@ -44,7 +48,7 @@
 
 .feed-panel-body p img{
   max-width: 100%;
-	width: 600px;
+   width: 600px;
   max-height: 400px;
 }
 
@@ -128,14 +132,14 @@
 }
 
 .like-content span {
-	color: #9d9da4;
-	font-family: monospace;
+   color: #9d9da4;
+   font-family: monospace;
 }
 
 /* 채팅승낙 대기중, 채팅신청하기 버튼 */
 .like-content .btn-secondary {
-	  display: block;
-	  margin: 15px auto 15px;
+     display: block;
+     margin: 15px auto 15px;
     text-align: center;
     background: #ed2553;
     border-radius: 3px;
@@ -151,16 +155,16 @@
     transition: 0.3s ease;
 }
 .like-content .btn-secondary:hover {
-	  transform: translateY(-3px);
+     transform: translateY(-3px);
 }
 .like-content .btn-secondary .fa {
-	  margin-right: 5px;
+     margin-right: 5px;
 }
 
 /* 채팅방 들어가기 버튼 */
 .like-content .btn-enter-chat {
-	  display: block;
-	  margin: 15px auto 15px;
+     display: block;
+     margin: 15px auto 15px;
     text-align: center;
     background: #332a2c;
     border-radius: 3px;
@@ -176,19 +180,19 @@
     transition: 0.3s ease;
 }
 .like-content .btn-enter-chat:hover {
-	  transform: translateY(-3px);
+     transform: translateY(-3px);
 }
 .like-content .btn-enter-chat .fa {
-	  margin-right: 5px;
+     margin-right: 5px;
 }
 
 
 
 .animate-like {
-	animation-name: likeAnimation;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-	animation-duration: 0.65s;
+   animation-name: likeAnimation;
+   animation-iteration-count: 1;
+   animation-fill-mode: forwards;
+   animation-duration: 0.65s;
 }
 @keyframes likeAnimation {
   0%   { transform: scale(30); }

@@ -1,5 +1,6 @@
-// const socket = io.connect("http://123.248.53.76:8081");
-const socket = io.connect("http://localhost:8081");
+
+const socket = io.connect("http://123.248.53.76:8081");
+// const socket = io.connect("http://localhost:8081");
 let userEmail = $('.userEmail').text();
 let roomId;
 
@@ -48,18 +49,14 @@ $('.leave-btn').click(function(){
     socket.emit('leave',roomId);
 })
 
-// 이 메서드만 여러번 일어난다ㅏ.
 $('.md-input').keypress(function(event){
     let output;
     if (event.keyCode == 13){
         let message = $(this).val();
         let msgOutput ={};
-        // console.log("보낼 메시지 = "+message);
         msgOutput['message'] = message;
         msgOutput['senderEmail'] = userEmail;
         msgOutput['roomId'] = roomId;
-        // console.log("message와 함께 서버에 보낼 데이터");
-        // console.log(msgOutput);
         
         $(this).val('');
         socket.emit('message',msgOutput);
@@ -78,7 +75,6 @@ socket.on('message',output=>{
 });
 
 socket.on('initChatRoom',messages=>{
-    // console.log(messages);
     messages.forEach(message=>{
         if(message.userEmail == userEmail){
             appendChatBox('chat_message_right',message);

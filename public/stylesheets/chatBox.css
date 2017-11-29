@@ -118,6 +118,7 @@ aside {
     right: 70px;
     width: 300px;
     font-family: 'Open Sans', sans-serif;
+    z-index: 4;
 }
 .chat_box {
     padding: 16px;

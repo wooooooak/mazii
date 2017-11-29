@@ -84,42 +84,42 @@ $('#datePicker-search').click((e)=>{
 })
 
 
-// (function($) {
-//       $.fn.visible = function(partial) {
+(function($) {
+      $.fn.visible = function(partial) {
         
-//           var $t            = $(this),
-//               $w            = $(window),
-//               viewTop       = $w.scrollTop(),
-//               viewBottom    = viewTop + $w.height(),
-//               _top          = $t.offset().top,
-//               _bottom       = _top + $t.height(),
-//               compareTop    = partial === true ? _bottom : _top,
-//               compareBottom = partial === true ? _top : _bottom;
+          var $t            = $(this),
+              $w            = $(window),
+              viewTop       = $w.scrollTop(),
+              viewBottom    = viewTop + $w.height(),
+              _top          = $t.offset().top,
+              _bottom       = _top + $t.height(),
+              compareTop    = partial === true ? _bottom : _top,
+              compareBottom = partial === true ? _top : _bottom;
         
-//         return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+        return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
     
-//       };
+      };
         
-//     })(jQuery);
+    })(jQuery);
     
-//     var win = $(window);
+    var win = $(window);
     
-//     var allMods = $(".panel");
+    var allMods = $(".panel");
     
-//     allMods.each(function(i, el) {
-//       var el = $(el);
-//       if (el.visible(true)) {
-//         el.addClass("already-visible"); 
-//       } 
-//     });
+    allMods.each(function(i, el) {
+      var el = $(el);
+      if (el.visible(true)) {
+        el.addClass("already-visible"); 
+      } 
+    });
     
-//     win.scroll(function(event) {
+    win.scroll(function(event) {
       
-//       allMods.each(function(i, el) {
-//         var el = $(el);
-//         if (el.visible(true)) {
-//           el.addClass("come-in"); 
-//         } 
-//       });
+      allMods.each(function(i, el) {
+        var el = $(el);
+        if (el.visible(true)) {
+          el.addClass("come-in"); 
+        } 
+      });
       
-//     });
+    });

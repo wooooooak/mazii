@@ -14,19 +14,13 @@ module.exports = function(app){
 /* GET home page. */
 //최신꺼만 9개 보여주자
 router.get('/', function(req, res, next) {
-  // let dateInfoArr=[];
   Post.find().limit(9).sort({'createdAt':'desc'}).populate('author').exec((err,posts)=>{
     if(err) console.log(err);
-    // posts.forEach((post,index)=>{
-    //   let data = new Date(post.Date.start);
-    //   var 
-    // })
 
     res.render('index', { 
       title: '여행',
       user : req.user,
       popularPost : posts
-      // dateInfoArr : dateInfoArr
     });
   })
 });
@@ -50,7 +44,6 @@ router.get('/cities', function(req, res, next) {
 router.get('/city/:city',(req,res,next)=>{
   //url에서 도시 이름 구하기
   let cityName = removeWhitespace(req.params.city); //"HongKong"과 같은 도시 이름저장
-  // console.log(cityName + "======================");
   let title = '여행';
   if (!req.user) {
     console.log('사용자 인증 안된 상태임.');
@@ -79,9 +72,7 @@ router.get('/city/:city',(req,res,next)=>{
 // url의 pathname이 Mexico city -> Mexicocity로 파싱
 function removeWhitespace(pathname){
   let pathArr = Array.from(pathname);
-  // console.log(pathArr);
   let index = pathArr.indexOf(' ');
-  // console.log(index);
   if(index===-1){
     return pathArr.join('');
   }else{

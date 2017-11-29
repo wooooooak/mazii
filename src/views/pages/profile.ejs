@@ -10,6 +10,9 @@
 <% include ../partials/header %>
 <!-- Fixed navbar -->
 
+<br>
+<br>
+<br>
 
     <div class="container">
         <% if(profileUser && emailId) {%>
@@ -21,12 +24,22 @@
                 <h2><%= profileUser.name %></h2>
                 <a href="https://www.facebook.com/<%=emailId%>"><%= profileUser.name %>님의 페이스북 들여다보기</a>
             </div>
+        
+    <p class="text-center"><%= profileUser.name %>님의 여행지</p>
+            <% if(posts){ %>
+                <% posts.forEach(function(post,idx){ %>
+                    <p class="text-center">
+                        <a href="/city/<%= post.city %>"><%= post.city %></a>
+                    </p>
+                <% }) %>
+            <% } %>
+
         <%} %>    
-
-
     </div>
 
-
+<br>
+<br>
+<br>
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
     <script>

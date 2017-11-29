@@ -32,26 +32,25 @@
                                     <span class="day">31</span>
                                     <span class="month">Jan</span>
                                 </time>
-                                <img alt="프로필이미지" src="<%= alarm.from.facebook.picture.data.url %>" />
+                                <a href="/auth/profile/<%=alarm.from.email%>" target="blank">
+                                    <img alt="프로필이미지" src="<%= alarm.from.facebook.picture.data.url %>" />
+                                </a>
+
                                 <div class="info">
                                     <h4 class="title"><%= alarm.from.name%> 님께서 회원님의 여행지인 <%= alarm.post.city %> 포스트를 보고 채팅 요청을 보냇습니다.</h4>
-                                    <p class="desc"> Pirate and Princess Adventure</p>
                                     <ul>
                                     <input type="hidden" id="reqUserId" value="<%= alarm.from._id %>">
                                     <input type="hidden" id="postId" value="<%= alarm.post._id %>">
                                     <input type="hidden" id="alarmId" value="<%= alarm._id %>">
                                     <% if(alarm.checked === false) { %>
                                         <li style="width:33%;" class="chatReqAcceptBtn">수락하기 <span class="fa fa-handshake-o"></span></li>
-                                        <li style="width:34%;">거절하기 <span class="fa fa-hand-stop-o"></span></li>
+                                        <li style="width:34%;" class="chatReqRefuseBtn">거절하기 <span class="fa fa-hand-stop-o"></span></li>
                                         <% } else { %>
-                                        <span>처리됨</span>
+                                        <span style="color:red;">처리됨</span>
                                         <% } %>
                                     </ul>
                                 </div>
-                                <div class="social">
-                                    <ul>
-                                    </ul>
-                                </div>
+
                             </li>
                             <% }else{ %>
                                 삭제된 게시글에 대한 요청 by <%= alarm.from.name%> 

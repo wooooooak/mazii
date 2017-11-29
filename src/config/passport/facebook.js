@@ -10,8 +10,6 @@ module.exports = function(app, passport) {
 		callbackURL: config.facebook.callbackURL,
 		profileFields: ['id', 'displayName', 'email','picture.type(large)']
 	}, function(accessToken, refreshToken, profile, done) {
-		// console.log('passport의 facebook 호출됨.');
-		// console.dir(profile);
 		
 		var options = {
 		    criteria: { 'facebook.id': profile.id }
@@ -22,20 +20,20 @@ module.exports = function(app, passport) {
 			if (!user) {
 				let email ;
 				if(!profile.emails){
-					email = user._id;
+					email = profile._id; //이메일 아이디가 없으면 id를 email로 만듬
+				}else{
+					email = profile.emails[0].value
 				}
-				console.dir(profile);
+				// console.dir(profile);
+				console.log("email 확인 --------------- ");
+				console.log(email);
 				var user = new User({
 					name: profile.displayName,
-					email: profile.emails[0].value,
+					email: email,
 					provider: 'facebook',
 					authToken: accessToken,
 					facebook: profile._json
-				});
-
-				let userId = user._id;
-				console.log("userId = "+user._id);
-				
+				});				
 
 				user.save(function (err) {
 					if (err) console.log(err);
@@ -47,19 +45,3 @@ module.exports = function(app, passport) {
 	    })
 	});
 };
-
-// UserMain.findOne({user : userId},(err,userMain)=>{
-// 	if(err) console.log(err);;
-// 	if(!userMain){
-// 		const userMain = new UserMain({
-// 			user : userId
-// 		});
-
-// 		userMain.save(err=>{
-// 			if(err) console.log(err);				
-// 		});
-// 		console.log("userMain doc 생성됨");
-// 	}else{
-// 		console.log(userMain.name+" userMain 이미존재");
-// 	}
-// })

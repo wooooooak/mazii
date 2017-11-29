@@ -133,10 +133,12 @@ body {
         height: 120px;
         padding: 0px;
     }
+    .event-list > li > a,
     .event-list > li > time,
     .event-list > li > img  {
         display: inline-block;
     }
+    .event-list > li > a,
     .event-list > li > time,
     .event-list > li > img {
         width: 120px;
@@ -146,8 +148,9 @@ body {
         background-color: rgb(245, 245, 245);
         overflow: hidden;
     }
+    .event-list > li > a,
     .event-list > li > time,
-    .event-list > li > img {
+    .event-list > li > a > img {
         width: 120px;
         height: 120px;
         padding: 0px;
@@ -167,24 +170,5 @@ body {
         position: absolute;
         left: 0px;
         bottom: 0px;
-    }
-    .event-list > li > .social {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        display: block;
-        width: 40px;
-    }
-    .event-list > li > .social > ul {
-        border-left: 1px solid rgb(230, 230, 230);
-    }
-    .event-list > li > .social > ul > li {			
-        display: block;
-        padding: 0px;
-    }
-    .event-list > li > .social > ul > li > a {
-        display: block;
-        width: 40px;
-        padding: 10px 0px 9px;
     }
 }
