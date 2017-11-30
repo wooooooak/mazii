@@ -7,6 +7,7 @@
     margin: 50px auto 10px auto;
 }
 .card-container:hover{
+    border-radius : 1em;
     box-shadow: 3px 3px 50px #7e93a3;
 }
 
@@ -28,16 +29,18 @@
     height : 30px;
 }
 
+/* 선택중인 채팅창 */
 .selected-chat{
-    background: #c3df777a;
+    border-radius : 1em;
+    box-shadow: 1px 3px 30px #7e93a3;
 }
 
 /* Weekly Best Trip 문구 */
 .chat-list-title {
     font-size: 30px;
-  animation-duration: 1s;
-  animation-name: slidein;
-  margin-bottom: 30px;
+    animation-duration: 1s;
+    animation-name: slidein;
+    margin-bottom: 30px;
 }
 
 @keyframes slidein {

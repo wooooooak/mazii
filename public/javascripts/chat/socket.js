@@ -1,6 +1,6 @@
 
-const socket = io.connect("http://123.248.53.76:8081");
-// const socket = io.connect("http://localhost:8081");
+// const socket = io.connect("http://123.248.53.76:8081");
+const socket = io.connect("http://localhost:8081");
 let userEmail = $('.userEmail').text();
 let roomId;
 
@@ -24,7 +24,7 @@ function appendChatBox(whoSendClass,output){
 $('.open-btn').click(function(e){
     //val을 출력하면 하나만 출력되지만 사실 val은 배열이다. 따라서 each해줘야 함
     let val = $(this).parent().parent().find('.user-picture').find('input');
-    $(this).parent().parent().parent().parent().addClass('selected-chat');
+    $(this).parent().parent().parent().addClass('selected-chat');
     let user = []; //해당 post의 채팅 참여자가 담긴 배열
     val.each(function(index,val){
         user[index]=$(this).val();

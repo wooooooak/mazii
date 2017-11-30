@@ -17,8 +17,6 @@ module.exports = function(server){
     //클라이언트 소켓이 연결되었을떄
     io.sockets.on('connection', (socket) => {
       console.log('socket 요청 됨');
-    
-      
 
       socket.on('disconnect', () => {
         console.log('disconnected');
@@ -29,7 +27,6 @@ module.exports = function(server){
         console.log("접속한 클라이언트의 id = " + socket.id);
         emailToSocketId[room.userEmail] = socket.id;
         console.log('enter 이벤트 받음');
-        // console.dir(room);
     
         if(io.sockets.adapter.rooms[room.roomId]){
           console.log('방이 이미 만들어져 있습니다.');
@@ -38,9 +35,8 @@ module.exports = function(server){
         }
 
         socket.join(room.roomId);
-        // io.sockets.adapter.rooms[room.roomId].Owner = room.roomOwner;
         
-        console.log("room userEmail = "+room.userEmail);
+        // console.log("room userEmail = "+room.userEmail);
         User.findOne({'email':room.userEmail}).exec((err,user)=>{
           if(err) console.log(err);
           let userEmail = user.email;
@@ -49,14 +45,10 @@ module.exports = function(server){
         });
         
         Message.find({'roomId':room.roomId}).exec((err,message)=>{
-          console.log('message db 꺼');
-          console.log(message);
-        }).then(message=>{
           //여기서는 대화하기 버튼을 누른사람에 한해서만 emit시켜야 된다.
           //그렇지 않으면 대화중이던 다른사람들도 대화창이 초기화된다.
           io.sockets.connected[emailToSocketId[room.userEmail]].emit('initChatRoom',message);
         })
-        
 
       });
     
@@ -91,10 +83,8 @@ module.exports = function(server){
             messageDB.save((err,msg)=>{
               if(err) console.log("mssage.save() error 발생");
               console.log("메세지 db에 저장 완료");
-              console.log(msg);
             })
            
-            // console.log(output);
             //여기서 서버에 존재하는 모든 socket들이
             //roomId에 해당하는 방에 전부 메세지를 보내는것 같다.
             io.sockets.in(msgOutput.roomId).emit('message',output);
@@ -103,10 +93,7 @@ module.exports = function(server){
       socket.on('leave',roomId=>{
         socket.leave(roomId);
         console.log('방을 나갔습니다.');
-
-        // console.dir(io.sockets.adapter.rooms);
       })
-
 
     });
 }

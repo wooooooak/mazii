@@ -36,7 +36,6 @@ router.put('/post/postWrite',(req,res,next)=>{
     })
   });
   
-  //req.body에는 {startDate:'~~~~/~~/~~',endDate:'~~~~/~~/~~',city:'~'}
   router.post('/post/toPostPage',(req,res,next)=>{
     let title = "글쓰기";
     console.dir(req.body);
@@ -58,13 +57,9 @@ router.put('/post/postWrite',(req,res,next)=>{
       else{
         console.log(user);
         userId = user._id;
-
-        // console.log("typeof userId "+typeof(userId));
       } 
     }).then((user)=>{
-      // console.log(city +''+ startDate +", "+email );
       postId = insertPost(req.body,userId);
-      
       user.chatAttendedPost.push(mongoose.Types.ObjectId(postId));
       user.save((err,user)  =>{
         if(err) console.log(err);
@@ -135,9 +130,9 @@ router.post('/post/modifyById/:id',(req,res)=>{
 
   });
 });
-  
-  function insertPost(reqBody,userId){
 
+
+  function insertPost(reqBody,userId){
     let startDate = new Date(reqBody.startDate);
     let endDate = new Date(reqBody.endDate);
     //utc 시간 설정

@@ -19,8 +19,10 @@ module.exports = function(app, passport) {
 			if (err) return done(err);
 			if (!user) {
 				let email ;
+				console.log("프로필 :::::::::::::::: ",profile);
 				if(!profile.emails){
-					email = profile._id; //이메일 아이디가 없으면 id를 email로 만듬
+					email = profile.id+'@maziiTravel.com'; //이메일 아이디가 없으면 id를 email로 만듬
+					console.log(`profile = ${profile.id}`);
 				}else{
 					email = profile.emails[0].value
 				}

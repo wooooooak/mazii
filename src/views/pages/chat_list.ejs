@@ -22,8 +22,8 @@
   <section class="card-holder">
       <!-- Begin  -->
       <% chatList.forEach((post,index)=>{ %>
-        <div class="col-md-3 col-sm-12">
-          <div class="card-container">
+        <div class="col-md-3 col-sm-12"> 
+          <div class="card-container selectedOrDefault">
               <div class="front">
                 <div class="cover text-center">
                   <%= post.city %> <br>
@@ -62,11 +62,6 @@
 <!-- 채팅창 팝업부분 -->
 <% include ../partials/chat/chat_aside %>
 
-    <!--<pre>
-      채팅 갯수 <%= ListCount %>
-      <br>
-      <%= chatList[0] %>
-    </pre> -->
 
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
