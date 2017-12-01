@@ -4,7 +4,7 @@
 
 <div class="popup-head">
     			<div class="popup-head-left pull-left">
-                    <a Design and Developmenta title="Gurdeep Osahan (Web Designer)" target="_blank" href="https://web.facebook.com/iamgurdeeposahan">
+                    <a target="_blank" href="<%= user.email %>">
                     <img class="md-user-image" src="<%= user.facebook.picture.data.url %>" />
                     <h1><%= user.name %></h1><small><br></a>
                 </div>
@@ -18,7 +18,7 @@
 
                             <div class="chat_message_wrapper">
                                 <div class="chat_user_avatar">
-                                    <a href="https://web.facebook.com/iamgurdeeposahan" target="_blank" >
+                                    <a href="<%= user.email %>" target="_blank" >
                                     <img src="http://www.webncc.in/images/gurdeeposahan.jpg" class="md-user-image">
                                     </a>
                                 </div>

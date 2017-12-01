@@ -1,15 +1,17 @@
 
-// const socket = io.connect("http://123.248.53.76:8081");
-const socket = io.connect("http://localhost:8081");
+const socket = io.connect("http://123.248.53.76:8081");
+// const socket = io.connect("http://localhost:8081");
 let userEmail = $('.userEmail').text();
 let roomId;
 
 function appendChatBox(whoSendClass,output){
+    let emailId = output.userEmail.slice(0,output.userEmail.indexOf('@'));
+    console.log(output);
     $('.chat_box').append(
         ` <div class="chat_message_wrapper ${whoSendClass}" style="overflow:auto">
         <div class="chat_user_avatar">
-            <a href="https://web.facebook.com/iamgurdeeposahan" target="_blank" >
-            <img alt="Gurdeep Osahan (Web Designer)" title="Gurdeep Osahan (Web Designer)"  src="${output.imgUrl}" class="md-user-image">
+            <a href="https://facebook.com/${emailId}" target="_blank" >
+            <img src="${output.imgUrl}" class="md-user-image">
             </a>
         </div>
         <ul class="chat_message">
