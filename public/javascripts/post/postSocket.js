@@ -1,8 +1,8 @@
 /*
  * feed 부분에서 채팅 참여할때 필요한 소켓 코드
  */
-
-const socket = io.connect("http://123.248.53.76:8081");
+const socket = io.connect("http://123.248.53.76:8081"); // 자취방
+// const socket = io.connect("http://118.223.229.56:8081/"); // 장유 유선 랜
 // const socket = io.connect("http://localhost:8081");
 let userEmail;
 let roomId;

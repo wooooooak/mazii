@@ -1,5 +1,6 @@
 
-const socket = io.connect("http://123.248.53.76:8081");
+const socket = io.connect("http://123.248.53.76:8081"); // 자취방
+// const socket = io.connect("http://118.223.229.56:8081/"); // 장유 유선 랜
 // const socket = io.connect("http://localhost:8081");
 let userEmail = $('.userEmail').text();
 let roomId;

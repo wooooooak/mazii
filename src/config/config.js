@@ -7,8 +7,8 @@ module.exports={
         url:'mongodb://localhost/mazii',
     },
     facebook:{
-        clientID:'527791144236225',
-        clientSecret:'5652eb54204dcaa58e6a9baa5c06d1d8',
+        clientID:'1463663843752591',
+        clientSecret:'afee70a4d04fad6677a2e111e27f4cc4',
         callbackURL:'/auth/facebook/callback'
     }
 }

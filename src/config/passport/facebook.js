@@ -14,7 +14,7 @@ module.exports = function(app, passport) {
 		var options = {
 		    criteria: { 'facebook.id': profile.id }
 		};
-		
+			
 	    User.findOne(options.criteria).populate('Alarms').exec(function (err, user) {
 			if (err) return done(err);
 			if (!user) {
